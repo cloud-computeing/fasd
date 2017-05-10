@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzu.bbs.mapper.PostMapper" >
+  <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.Post" >
+    <id column="postId" property="postid" jdbcType="INTEGER" />
+    <result column="postTitle" property="posttitle" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="clickAmount" property="clickamount" jdbcType="INTEGER" />
+    <result column="goodAmount" property="goodamount" jdbcType="INTEGER" />
+    <result column="replyAmount" property="replyamount" jdbcType="INTEGER" />
+    <result column="latestReplyTime" property="latestreplytime" jdbcType="DATE" />
+    <result column="pictureId" property="pictureid" jdbcType="VARCHAR" />
+    <result column="topFlag" property="topflag" jdbcType="INTEGER" />
+    <result column="plateId" property="plateid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gzu.bbs.pojo.Post" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    postId, postTitle, userId, userName, clickAmount, goodAmount, replyAmount, latestReplyTime, 
+    pictureId, topFlag, plateId
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gzu.bbs.pojo.PostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gzu.bbs.pojo.PostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post
+    where postId = #{postid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from post
+    where postId = #{postid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gzu.bbs.pojo.PostExample" >
+    delete from post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gzu.bbs.pojo.Post" >
+    insert into post (postId, postTitle, userId, 
+      userName, clickAmount, goodAmount, 
+      replyAmount, latestReplyTime, pictureId, 
+      topFlag, plateId, content
+      )
+    values (#{postid,jdbcType=INTEGER}, #{posttitle,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{clickamount,jdbcType=INTEGER}, #{goodamount,jdbcType=INTEGER}, 
+      #{replyamount,jdbcType=INTEGER}, #{latestreplytime,jdbcType=DATE}, #{pictureid,jdbcType=VARCHAR}, 
+      #{topflag,jdbcType=INTEGER}, #{plateid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Post" >
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postid != null" >
+        postId,
+      </if>
+      <if test="posttitle != null" >
+        postTitle,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="clickamount != null" >
+        clickAmount,
+      </if>
+      <if test="goodamount != null" >
+        goodAmount,
+      </if>
+      <if test="replyamount != null" >
+        replyAmount,
+      </if>
+      <if test="latestreplytime != null" >
+        latestReplyTime,
+      </if>
+      <if test="pictureid != null" >
+        pictureId,
+      </if>
+      <if test="topflag != null" >
+        topFlag,
+      </if>
+      <if test="plateid != null" >
+        plateId,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postid != null" >
+        #{postid,jdbcType=INTEGER},
+      </if>
+      <if test="posttitle != null" >
+        #{posttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="clickamount != null" >
+        #{clickamount,jdbcType=INTEGER},
+      </if>
+      <if test="goodamount != null" >
+        #{goodamount,jdbcType=INTEGER},
+      </if>
+      <if test="replyamount != null" >
+        #{replyamount,jdbcType=INTEGER},
+      </if>
+      <if test="latestreplytime != null" >
+        #{latestreplytime,jdbcType=DATE},
+      </if>
+      <if test="pictureid != null" >
+        #{pictureid,jdbcType=VARCHAR},
+      </if>
+      <if test="topflag != null" >
+        #{topflag,jdbcType=INTEGER},
+      </if>
+      <if test="plateid != null" >
+        #{plateid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gzu.bbs.pojo.PostExample" resultType="java.lang.Integer" >
+    select count(*) from post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post
+    <set >
+      <if test="record.postid != null" >
+        postId = #{record.postid,jdbcType=INTEGER},
+      </if>
+      <if test="record.posttitle != null" >
+        postTitle = #{record.posttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clickamount != null" >
+        clickAmount = #{record.clickamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodamount != null" >
+        goodAmount = #{record.goodamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyamount != null" >
+        replyAmount = #{record.replyamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.latestreplytime != null" >
+        latestReplyTime = #{record.latestreplytime,jdbcType=DATE},
+      </if>
+      <if test="record.pictureid != null" >
+        pictureId = #{record.pictureid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.topflag != null" >
+        topFlag = #{record.topflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.plateid != null" >
+        plateId = #{record.plateid,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update post
+    set postId = #{record.postid,jdbcType=INTEGER},
+      postTitle = #{record.posttitle,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=INTEGER},
+      userName = #{record.username,jdbcType=VARCHAR},
+      clickAmount = #{record.clickamount,jdbcType=INTEGER},
+      goodAmount = #{record.goodamount,jdbcType=INTEGER},
+      replyAmount = #{record.replyamount,jdbcType=INTEGER},
+      latestReplyTime = #{record.latestreplytime,jdbcType=DATE},
+      pictureId = #{record.pictureid,jdbcType=VARCHAR},
+      topFlag = #{record.topflag,jdbcType=INTEGER},
+      plateId = #{record.plateid,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post
+    set postId = #{record.postid,jdbcType=INTEGER},
+      postTitle = #{record.posttitle,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=INTEGER},
+      userName = #{record.username,jdbcType=VARCHAR},
+      clickAmount = #{record.clickamount,jdbcType=INTEGER},
+      goodAmount = #{record.goodamount,jdbcType=INTEGER},
+      replyAmount = #{record.replyamount,jdbcType=INTEGER},
+      latestReplyTime = #{record.latestreplytime,jdbcType=DATE},
+      pictureId = #{record.pictureid,jdbcType=VARCHAR},
+      topFlag = #{record.topflag,jdbcType=INTEGER},
+      plateId = #{record.plateid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzu.bbs.pojo.Post" >
+    update post
+    <set >
+      <if test="posttitle != null" >
+        postTitle = #{posttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="clickamount != null" >
+        clickAmount = #{clickamount,jdbcType=INTEGER},
+      </if>
+      <if test="goodamount != null" >
+        goodAmount = #{goodamount,jdbcType=INTEGER},
+      </if>
+      <if test="replyamount != null" >
+        replyAmount = #{replyamount,jdbcType=INTEGER},
+      </if>
+      <if test="latestreplytime != null" >
+        latestReplyTime = #{latestreplytime,jdbcType=DATE},
+      </if>
+      <if test="pictureid != null" >
+        pictureId = #{pictureid,jdbcType=VARCHAR},
+      </if>
+      <if test="topflag != null" >
+        topFlag = #{topflag,jdbcType=INTEGER},
+      </if>
+      <if test="plateid != null" >
+        plateId = #{plateid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where postId = #{postid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzu.bbs.pojo.Post" >
+    update post
+    set postTitle = #{posttitle,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      userName = #{username,jdbcType=VARCHAR},
+      clickAmount = #{clickamount,jdbcType=INTEGER},
+      goodAmount = #{goodamount,jdbcType=INTEGER},
+      replyAmount = #{replyamount,jdbcType=INTEGER},
+      latestReplyTime = #{latestreplytime,jdbcType=DATE},
+      pictureId = #{pictureid,jdbcType=VARCHAR},
+      topFlag = #{topflag,jdbcType=INTEGER},
+      plateId = #{plateid,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where postId = #{postid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.Post" >
+    update post
+    set postTitle = #{posttitle,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      userName = #{username,jdbcType=VARCHAR},
+      clickAmount = #{clickamount,jdbcType=INTEGER},
+      goodAmount = #{goodamount,jdbcType=INTEGER},
+      replyAmount = #{replyamount,jdbcType=INTEGER},
+      latestReplyTime = #{latestreplytime,jdbcType=DATE},
+      pictureId = #{pictureid,jdbcType=VARCHAR},
+      topFlag = #{topflag,jdbcType=INTEGER},
+      plateId = #{plateid,jdbcType=INTEGER}
+    where postId = #{postid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzu.bbs.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.User" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userPassword" property="userpassword" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userMail" property="usermail" jdbcType="VARCHAR" />
+    <result column="userSex" property="usersex" jdbcType="VARCHAR" />
+    <result column="userHeadId" property="userheadid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gzu.bbs.pojo.User" extends="BaseResultMap" >
+    <result column="signature" property="signature" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userId, userPassword, userName, userMail, userSex, userHeadId
+  </sql>
+  <sql id="Blob_Column_List" >
+    signature
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gzu.bbs.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gzu.bbs.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gzu.bbs.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gzu.bbs.pojo.User" >
+    insert into user (userId, userPassword, userName, 
+      userMail, userSex, userHeadId, 
+      signature)
+    values (#{userid,jdbcType=INTEGER}, #{userpassword,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{usermail,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, #{userheadid,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="userpassword != null" >
+        userPassword,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="usermail != null" >
+        userMail,
+      </if>
+      <if test="usersex != null" >
+        userSex,
+      </if>
+      <if test="userheadid != null" >
+        userHeadId,
+      </if>
+      <if test="signature != null" >
+        signature,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usermail != null" >
+        #{usermail,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="userheadid != null" >
+        #{userheadid,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gzu.bbs.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userpassword != null" >
+        userPassword = #{record.userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usermail != null" >
+        userMail = #{record.usermail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usersex != null" >
+        userSex = #{record.usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userheadid != null" >
+        userHeadId = #{record.userheadid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signature != null" >
+        signature = #{record.signature,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update user
+    set userId = #{record.userid,jdbcType=INTEGER},
+      userPassword = #{record.userpassword,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      userMail = #{record.usermail,jdbcType=VARCHAR},
+      userSex = #{record.usersex,jdbcType=VARCHAR},
+      userHeadId = #{record.userheadid,jdbcType=VARCHAR},
+      signature = #{record.signature,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set userId = #{record.userid,jdbcType=INTEGER},
+      userPassword = #{record.userpassword,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      userMail = #{record.usermail,jdbcType=VARCHAR},
+      userSex = #{record.usersex,jdbcType=VARCHAR},
+      userHeadId = #{record.userheadid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzu.bbs.pojo.User" >
+    update user
+    <set >
+      <if test="userpassword != null" >
+        userPassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usermail != null" >
+        userMail = #{usermail,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        userSex = #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="userheadid != null" >
+        userHeadId = #{userheadid,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzu.bbs.pojo.User" >
+    update user
+    set userPassword = #{userpassword,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userMail = #{usermail,jdbcType=VARCHAR},
+      userSex = #{usersex,jdbcType=VARCHAR},
+      userHeadId = #{userheadid,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=LONGVARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.User" >
+    update user
+    set userPassword = #{userpassword,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userMail = #{usermail,jdbcType=VARCHAR},
+      userSex = #{usersex,jdbcType=VARCHAR},
+      userHeadId = #{userheadid,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

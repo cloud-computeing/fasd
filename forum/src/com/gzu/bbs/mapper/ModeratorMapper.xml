@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzu.bbs.mapper.ModeratorMapper" >
+  <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.Moderator" >
+    <id column="moderatorId" property="moderatorid" jdbcType="INTEGER" />
+    <result column="moderatorName" property="moderatorname" jdbcType="VARCHAR" />
+    <result column="moderatorPassWord" property="moderatorpassword" jdbcType="VARCHAR" />
+    <result column="moderatorSex" property="moderatorsex" jdbcType="VARCHAR" />
+    <result column="moderatorHeadId" property="moderatorheadid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    moderatorId, moderatorName, moderatorPassWord, moderatorSex, moderatorHeadId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gzu.bbs.pojo.ModeratorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from moderator
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from moderator
+    where moderatorId = #{moderatorid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from moderator
+    where moderatorId = #{moderatorid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gzu.bbs.pojo.ModeratorExample" >
+    delete from moderator
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gzu.bbs.pojo.Moderator" >
+    insert into moderator (moderatorId, moderatorName, moderatorPassWord, 
+      moderatorSex, moderatorHeadId)
+    values (#{moderatorid,jdbcType=INTEGER}, #{moderatorname,jdbcType=VARCHAR}, #{moderatorpassword,jdbcType=VARCHAR}, 
+      #{moderatorsex,jdbcType=VARCHAR}, #{moderatorheadid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Moderator" >
+    insert into moderator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="moderatorid != null" >
+        moderatorId,
+      </if>
+      <if test="moderatorname != null" >
+        moderatorName,
+      </if>
+      <if test="moderatorpassword != null" >
+        moderatorPassWord,
+      </if>
+      <if test="moderatorsex != null" >
+        moderatorSex,
+      </if>
+      <if test="moderatorheadid != null" >
+        moderatorHeadId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="moderatorid != null" >
+        #{moderatorid,jdbcType=INTEGER},
+      </if>
+      <if test="moderatorname != null" >
+        #{moderatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorpassword != null" >
+        #{moderatorpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorsex != null" >
+        #{moderatorsex,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorheadid != null" >
+        #{moderatorheadid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gzu.bbs.pojo.ModeratorExample" resultType="java.lang.Integer" >
+    select count(*) from moderator
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update moderator
+    <set >
+      <if test="record.moderatorid != null" >
+        moderatorId = #{record.moderatorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.moderatorname != null" >
+        moderatorName = #{record.moderatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moderatorpassword != null" >
+        moderatorPassWord = #{record.moderatorpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moderatorsex != null" >
+        moderatorSex = #{record.moderatorsex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.moderatorheadid != null" >
+        moderatorHeadId = #{record.moderatorheadid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update moderator
+    set moderatorId = #{record.moderatorid,jdbcType=INTEGER},
+      moderatorName = #{record.moderatorname,jdbcType=VARCHAR},
+      moderatorPassWord = #{record.moderatorpassword,jdbcType=VARCHAR},
+      moderatorSex = #{record.moderatorsex,jdbcType=VARCHAR},
+      moderatorHeadId = #{record.moderatorheadid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzu.bbs.pojo.Moderator" >
+    update moderator
+    <set >
+      <if test="moderatorname != null" >
+        moderatorName = #{moderatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorpassword != null" >
+        moderatorPassWord = #{moderatorpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorsex != null" >
+        moderatorSex = #{moderatorsex,jdbcType=VARCHAR},
+      </if>
+      <if test="moderatorheadid != null" >
+        moderatorHeadId = #{moderatorheadid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where moderatorId = #{moderatorid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.Moderator" >
+    update moderator
+    set moderatorName = #{moderatorname,jdbcType=VARCHAR},
+      moderatorPassWord = #{moderatorpassword,jdbcType=VARCHAR},
+      moderatorSex = #{moderatorsex,jdbcType=VARCHAR},
+      moderatorHeadId = #{moderatorheadid,jdbcType=VARCHAR}
+    where moderatorId = #{moderatorid,jdbcType=INTEGER}
+  </update>
+</mapper>
