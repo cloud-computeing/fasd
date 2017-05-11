@@ -1,6 +1,7 @@
 package com.gzu.bbs.mapper;
 
 import com.gzu.bbs.pojo.Plate;
+import com.gzu.bbs.pojo.PlateCustom;
 import com.gzu.bbs.pojo.PlateExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -27,4 +28,7 @@ public interface PlateMapper {
     int updateByPrimaryKeySelective(Plate record);
 
     int updateByPrimaryKey(Plate record);
+    
+    //根据类型查询板块
+    List<PlateCustom> selectByType(Integer typeid);
 }

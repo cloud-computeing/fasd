@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.Reply" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="postId" property="postid" jdbcType="INTEGER" />
-    <result column="replyerId" property="replyerid" jdbcType="INTEGER" />
+    <result column="replyerId" property="replyerid" jdbcType="VARCHAR" />
     <result column="replyerName" property="replyername" jdbcType="VARCHAR" />
     <result column="replyTime" property="replytime" jdbcType="DATE" />
-    <result column="replyToObjectId" property="replytoobjectid" jdbcType="INTEGER" />
+    <result column="replyToObjectId" property="replytoobjectid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.gzu.bbs.pojo.Reply" extends="BaseResultMap" >
     <result column="replyContent" property="replycontent" jdbcType="LONGVARCHAR" />
@@ -128,8 +128,8 @@
     insert into reply (id, postId, replyerId, 
       replyerName, replyTime, replyToObjectId, 
       replyContent)
-    values (#{id,jdbcType=INTEGER}, #{postid,jdbcType=INTEGER}, #{replyerid,jdbcType=INTEGER}, 
-      #{replyername,jdbcType=VARCHAR}, #{replytime,jdbcType=DATE}, #{replytoobjectid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{postid,jdbcType=INTEGER}, #{replyerid,jdbcType=VARCHAR}, 
+      #{replyername,jdbcType=VARCHAR}, #{replytime,jdbcType=DATE}, #{replytoobjectid,jdbcType=VARCHAR}, 
       #{replycontent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Reply" >
@@ -165,7 +165,7 @@
         #{postid,jdbcType=INTEGER},
       </if>
       <if test="replyerid != null" >
-        #{replyerid,jdbcType=INTEGER},
+        #{replyerid,jdbcType=VARCHAR},
       </if>
       <if test="replyername != null" >
         #{replyername,jdbcType=VARCHAR},
@@ -174,7 +174,7 @@
         #{replytime,jdbcType=DATE},
       </if>
       <if test="replytoobjectid != null" >
-        #{replytoobjectid,jdbcType=INTEGER},
+        #{replytoobjectid,jdbcType=VARCHAR},
       </if>
       <if test="replycontent != null" >
         #{replycontent,jdbcType=LONGVARCHAR},
@@ -197,7 +197,7 @@
         postId = #{record.postid,jdbcType=INTEGER},
       </if>
       <if test="record.replyerid != null" >
-        replyerId = #{record.replyerid,jdbcType=INTEGER},
+        replyerId = #{record.replyerid,jdbcType=VARCHAR},
       </if>
       <if test="record.replyername != null" >
         replyerName = #{record.replyername,jdbcType=VARCHAR},
@@ -206,7 +206,7 @@
         replyTime = #{record.replytime,jdbcType=DATE},
       </if>
       <if test="record.replytoobjectid != null" >
-        replyToObjectId = #{record.replytoobjectid,jdbcType=INTEGER},
+        replyToObjectId = #{record.replytoobjectid,jdbcType=VARCHAR},
       </if>
       <if test="record.replycontent != null" >
         replyContent = #{record.replycontent,jdbcType=LONGVARCHAR},
@@ -220,10 +220,10 @@
     update reply
     set id = #{record.id,jdbcType=INTEGER},
       postId = #{record.postid,jdbcType=INTEGER},
-      replyerId = #{record.replyerid,jdbcType=INTEGER},
+      replyerId = #{record.replyerid,jdbcType=VARCHAR},
       replyerName = #{record.replyername,jdbcType=VARCHAR},
       replyTime = #{record.replytime,jdbcType=DATE},
-      replyToObjectId = #{record.replytoobjectid,jdbcType=INTEGER},
+      replyToObjectId = #{record.replytoobjectid,jdbcType=VARCHAR},
       replyContent = #{record.replycontent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -233,10 +233,10 @@
     update reply
     set id = #{record.id,jdbcType=INTEGER},
       postId = #{record.postid,jdbcType=INTEGER},
-      replyerId = #{record.replyerid,jdbcType=INTEGER},
+      replyerId = #{record.replyerid,jdbcType=VARCHAR},
       replyerName = #{record.replyername,jdbcType=VARCHAR},
       replyTime = #{record.replytime,jdbcType=DATE},
-      replyToObjectId = #{record.replytoobjectid,jdbcType=INTEGER}
+      replyToObjectId = #{record.replytoobjectid,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -248,7 +248,7 @@
         postId = #{postid,jdbcType=INTEGER},
       </if>
       <if test="replyerid != null" >
-        replyerId = #{replyerid,jdbcType=INTEGER},
+        replyerId = #{replyerid,jdbcType=VARCHAR},
       </if>
       <if test="replyername != null" >
         replyerName = #{replyername,jdbcType=VARCHAR},
@@ -257,7 +257,7 @@
         replyTime = #{replytime,jdbcType=DATE},
       </if>
       <if test="replytoobjectid != null" >
-        replyToObjectId = #{replytoobjectid,jdbcType=INTEGER},
+        replyToObjectId = #{replytoobjectid,jdbcType=VARCHAR},
       </if>
       <if test="replycontent != null" >
         replyContent = #{replycontent,jdbcType=LONGVARCHAR},
@@ -268,20 +268,20 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzu.bbs.pojo.Reply" >
     update reply
     set postId = #{postid,jdbcType=INTEGER},
-      replyerId = #{replyerid,jdbcType=INTEGER},
+      replyerId = #{replyerid,jdbcType=VARCHAR},
       replyerName = #{replyername,jdbcType=VARCHAR},
       replyTime = #{replytime,jdbcType=DATE},
-      replyToObjectId = #{replytoobjectid,jdbcType=INTEGER},
+      replyToObjectId = #{replytoobjectid,jdbcType=VARCHAR},
       replyContent = #{replycontent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.Reply" >
     update reply
     set postId = #{postid,jdbcType=INTEGER},
-      replyerId = #{replyerid,jdbcType=INTEGER},
+      replyerId = #{replyerid,jdbcType=VARCHAR},
       replyerName = #{replyername,jdbcType=VARCHAR},
       replyTime = #{replytime,jdbcType=DATE},
-      replyToObjectId = #{replytoobjectid,jdbcType=INTEGER}
+      replyToObjectId = #{replytoobjectid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

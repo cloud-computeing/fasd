@@ -193,4 +193,9 @@
       plateTypeId = #{platetypeid,jdbcType=INTEGER}
     where plateId = #{plateid,jdbcType=INTEGER}
   </update>
+    <!--**********************************************************  -->
+  
+  <select id="selectByType" parameterType="int" resultType="plateCustom">
+  	SELECT * FROM plate WHERE plateTypeId=#{id}
+  </select>
 </mapper>

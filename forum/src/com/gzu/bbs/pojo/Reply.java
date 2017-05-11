@@ -7,13 +7,13 @@ public class Reply {
 
     private Integer postid;
 
-    private Integer replyerid;
+    private String replyerid;
 
     private String replyername;
 
     private Date replytime;
 
-    private Integer replytoobjectid;
+    private String replytoobjectid;
 
     private String replycontent;
 
@@ -33,12 +33,12 @@ public class Reply {
         this.postid = postid;
     }
 
-    public Integer getReplyerid() {
+    public String getReplyerid() {
         return replyerid;
     }
 
-    public void setReplyerid(Integer replyerid) {
-        this.replyerid = replyerid;
+    public void setReplyerid(String replyerid) {
+        this.replyerid = replyerid == null ? null : replyerid.trim();
     }
 
     public String getReplyername() {
@@ -57,12 +57,12 @@ public class Reply {
         this.replytime = replytime;
     }
 
-    public Integer getReplytoobjectid() {
+    public String getReplytoobjectid() {
         return replytoobjectid;
     }
 
-    public void setReplytoobjectid(Integer replytoobjectid) {
-        this.replytoobjectid = replytoobjectid;
+    public void setReplytoobjectid(String replytoobjectid) {
+        this.replytoobjectid = replytoobjectid == null ? null : replytoobjectid.trim();
     }
 
     public String getReplycontent() {

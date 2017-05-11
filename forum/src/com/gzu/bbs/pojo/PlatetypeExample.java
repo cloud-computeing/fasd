@@ -233,6 +233,66 @@ public class PlatetypeExample {
             addCriterion("plateTypeName not between", value1, value2, "platetypename");
             return (Criteria) this;
         }
+
+        public Criteria andModeratoridIsNull() {
+            addCriterion("moderatorId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridIsNotNull() {
+            addCriterion("moderatorId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridEqualTo(Integer value) {
+            addCriterion("moderatorId =", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridNotEqualTo(Integer value) {
+            addCriterion("moderatorId <>", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridGreaterThan(Integer value) {
+            addCriterion("moderatorId >", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridGreaterThanOrEqualTo(Integer value) {
+            addCriterion("moderatorId >=", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridLessThan(Integer value) {
+            addCriterion("moderatorId <", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridLessThanOrEqualTo(Integer value) {
+            addCriterion("moderatorId <=", value, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridIn(List<Integer> values) {
+            addCriterion("moderatorId in", values, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridNotIn(List<Integer> values) {
+            addCriterion("moderatorId not in", values, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridBetween(Integer value1, Integer value2) {
+            addCriterion("moderatorId between", value1, value2, "moderatorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andModeratoridNotBetween(Integer value1, Integer value2) {
+            addCriterion("moderatorId not between", value1, value2, "moderatorid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

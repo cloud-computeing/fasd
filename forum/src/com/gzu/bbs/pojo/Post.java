@@ -7,7 +7,7 @@ public class Post {
 
     private String posttitle;
 
-    private Integer userid;
+    private String userid;
 
     private String username;
 
@@ -43,12 +43,12 @@ public class Post {
         this.posttitle = posttitle == null ? null : posttitle.trim();
     }
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getUsername() {

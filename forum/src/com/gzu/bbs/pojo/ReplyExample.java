@@ -262,52 +262,62 @@ public class ReplyExample {
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridEqualTo(Integer value) {
+        public Criteria andReplyeridEqualTo(String value) {
             addCriterion("replyerId =", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridNotEqualTo(Integer value) {
+        public Criteria andReplyeridNotEqualTo(String value) {
             addCriterion("replyerId <>", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridGreaterThan(Integer value) {
+        public Criteria andReplyeridGreaterThan(String value) {
             addCriterion("replyerId >", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridGreaterThanOrEqualTo(Integer value) {
+        public Criteria andReplyeridGreaterThanOrEqualTo(String value) {
             addCriterion("replyerId >=", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridLessThan(Integer value) {
+        public Criteria andReplyeridLessThan(String value) {
             addCriterion("replyerId <", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridLessThanOrEqualTo(Integer value) {
+        public Criteria andReplyeridLessThanOrEqualTo(String value) {
             addCriterion("replyerId <=", value, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridIn(List<Integer> values) {
+        public Criteria andReplyeridLike(String value) {
+            addCriterion("replyerId like", value, "replyerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyeridNotLike(String value) {
+            addCriterion("replyerId not like", value, "replyerid");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyeridIn(List<String> values) {
             addCriterion("replyerId in", values, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridNotIn(List<Integer> values) {
+        public Criteria andReplyeridNotIn(List<String> values) {
             addCriterion("replyerId not in", values, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridBetween(Integer value1, Integer value2) {
+        public Criteria andReplyeridBetween(String value1, String value2) {
             addCriterion("replyerId between", value1, value2, "replyerid");
             return (Criteria) this;
         }
 
-        public Criteria andReplyeridNotBetween(Integer value1, Integer value2) {
+        public Criteria andReplyeridNotBetween(String value1, String value2) {
             addCriterion("replyerId not between", value1, value2, "replyerid");
             return (Criteria) this;
         }
@@ -452,52 +462,62 @@ public class ReplyExample {
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidEqualTo(Integer value) {
+        public Criteria andReplytoobjectidEqualTo(String value) {
             addCriterion("replyToObjectId =", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidNotEqualTo(Integer value) {
+        public Criteria andReplytoobjectidNotEqualTo(String value) {
             addCriterion("replyToObjectId <>", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidGreaterThan(Integer value) {
+        public Criteria andReplytoobjectidGreaterThan(String value) {
             addCriterion("replyToObjectId >", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andReplytoobjectidGreaterThanOrEqualTo(String value) {
             addCriterion("replyToObjectId >=", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidLessThan(Integer value) {
+        public Criteria andReplytoobjectidLessThan(String value) {
             addCriterion("replyToObjectId <", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidLessThanOrEqualTo(Integer value) {
+        public Criteria andReplytoobjectidLessThanOrEqualTo(String value) {
             addCriterion("replyToObjectId <=", value, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidIn(List<Integer> values) {
+        public Criteria andReplytoobjectidLike(String value) {
+            addCriterion("replyToObjectId like", value, "replytoobjectid");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplytoobjectidNotLike(String value) {
+            addCriterion("replyToObjectId not like", value, "replytoobjectid");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplytoobjectidIn(List<String> values) {
             addCriterion("replyToObjectId in", values, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidNotIn(List<Integer> values) {
+        public Criteria andReplytoobjectidNotIn(List<String> values) {
             addCriterion("replyToObjectId not in", values, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidBetween(Integer value1, Integer value2) {
+        public Criteria andReplytoobjectidBetween(String value1, String value2) {
             addCriterion("replyToObjectId between", value1, value2, "replytoobjectid");
             return (Criteria) this;
         }
 
-        public Criteria andReplytoobjectidNotBetween(Integer value1, Integer value2) {
+        public Criteria andReplytoobjectidNotBetween(String value1, String value2) {
             addCriterion("replyToObjectId not between", value1, value2, "replytoobjectid");
             return (Criteria) this;
         }

@@ -1,6 +1,7 @@
 package com.gzu.bbs.mapper;
 
 import com.gzu.bbs.pojo.Platetype;
+import com.gzu.bbs.pojo.PlatetypeCustom;
 import com.gzu.bbs.pojo.PlatetypeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -25,6 +26,9 @@ public interface PlatetypeMapper {
     int updateByExample(@Param("record") Platetype record, @Param("example") PlatetypeExample example);
 
     int updateByPrimaryKeySelective(Platetype record);
+    
+    //查询所有板块类型
+    List<PlatetypeCustom> selectAllType();
 
     int updateByPrimaryKey(Platetype record);
 }

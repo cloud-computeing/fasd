@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.Post" >
     <id column="postId" property="postid" jdbcType="INTEGER" />
     <result column="postTitle" property="posttitle" jdbcType="VARCHAR" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
     <result column="userName" property="username" jdbcType="VARCHAR" />
     <result column="clickAmount" property="clickamount" jdbcType="INTEGER" />
     <result column="goodAmount" property="goodamount" jdbcType="INTEGER" />
@@ -136,7 +136,7 @@
       replyAmount, latestReplyTime, pictureId, 
       topFlag, plateId, content
       )
-    values (#{postid,jdbcType=INTEGER}, #{posttitle,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+    values (#{postid,jdbcType=INTEGER}, #{posttitle,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
       #{username,jdbcType=VARCHAR}, #{clickamount,jdbcType=INTEGER}, #{goodamount,jdbcType=INTEGER}, 
       #{replyamount,jdbcType=INTEGER}, #{latestreplytime,jdbcType=DATE}, #{pictureid,jdbcType=VARCHAR}, 
       #{topflag,jdbcType=INTEGER}, #{plateid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
@@ -190,7 +190,7 @@
         #{posttitle,jdbcType=VARCHAR},
       </if>
       <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
@@ -237,7 +237,7 @@
         postTitle = #{record.posttitle,jdbcType=VARCHAR},
       </if>
       <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.username != null" >
         userName = #{record.username,jdbcType=VARCHAR},
@@ -275,7 +275,7 @@
     update post
     set postId = #{record.postid,jdbcType=INTEGER},
       postTitle = #{record.posttitle,jdbcType=VARCHAR},
-      userId = #{record.userid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
       userName = #{record.username,jdbcType=VARCHAR},
       clickAmount = #{record.clickamount,jdbcType=INTEGER},
       goodAmount = #{record.goodamount,jdbcType=INTEGER},
@@ -293,7 +293,7 @@
     update post
     set postId = #{record.postid,jdbcType=INTEGER},
       postTitle = #{record.posttitle,jdbcType=VARCHAR},
-      userId = #{record.userid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
       userName = #{record.username,jdbcType=VARCHAR},
       clickAmount = #{record.clickamount,jdbcType=INTEGER},
       goodAmount = #{record.goodamount,jdbcType=INTEGER},
@@ -313,7 +313,7 @@
         postTitle = #{posttitle,jdbcType=VARCHAR},
       </if>
       <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="username != null" >
         userName = #{username,jdbcType=VARCHAR},
@@ -348,7 +348,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzu.bbs.pojo.Post" >
     update post
     set postTitle = #{posttitle,jdbcType=VARCHAR},
-      userId = #{userid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
       userName = #{username,jdbcType=VARCHAR},
       clickAmount = #{clickamount,jdbcType=INTEGER},
       goodAmount = #{goodamount,jdbcType=INTEGER},
@@ -363,7 +363,7 @@
   <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.Post" >
     update post
     set postTitle = #{posttitle,jdbcType=VARCHAR},
-      userId = #{userid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
       userName = #{username,jdbcType=VARCHAR},
       clickAmount = #{clickamount,jdbcType=INTEGER},
       goodAmount = #{goodamount,jdbcType=INTEGER},

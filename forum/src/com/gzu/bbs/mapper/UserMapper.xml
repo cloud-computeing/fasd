@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gzu.bbs.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.gzu.bbs.pojo.User" >
-    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
     <result column="userPassword" property="userpassword" jdbcType="VARCHAR" />
     <result column="userName" property="username" jdbcType="VARCHAR" />
     <result column="userMail" property="usermail" jdbcType="VARCHAR" />
@@ -106,17 +106,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from user
-    where userId = #{userid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from user
-    where userId = #{userid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.gzu.bbs.pojo.UserExample" >
     delete from user
@@ -128,7 +128,7 @@
     insert into user (userId, userPassword, userName, 
       userMail, userSex, userHeadId, 
       signature)
-    values (#{userid,jdbcType=INTEGER}, #{userpassword,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{usermail,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, #{userheadid,jdbcType=VARCHAR}, 
       #{signature,jdbcType=LONGVARCHAR})
   </insert>
@@ -159,7 +159,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="userpassword != null" >
         #{userpassword,jdbcType=VARCHAR},
@@ -191,7 +191,7 @@
     update user
     <set >
       <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.userpassword != null" >
         userPassword = #{record.userpassword,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update user
-    set userId = #{record.userid,jdbcType=INTEGER},
+    set userId = #{record.userid,jdbcType=VARCHAR},
       userPassword = #{record.userpassword,jdbcType=VARCHAR},
       userName = #{record.username,jdbcType=VARCHAR},
       userMail = #{record.usermail,jdbcType=VARCHAR},
@@ -231,7 +231,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update user
-    set userId = #{record.userid,jdbcType=INTEGER},
+    set userId = #{record.userid,jdbcType=VARCHAR},
       userPassword = #{record.userpassword,jdbcType=VARCHAR},
       userName = #{record.username,jdbcType=VARCHAR},
       userMail = #{record.usermail,jdbcType=VARCHAR},
@@ -263,7 +263,7 @@
         signature = #{signature,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where userId = #{userid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzu.bbs.pojo.User" >
     update user
@@ -273,7 +273,7 @@
       userSex = #{usersex,jdbcType=VARCHAR},
       userHeadId = #{userheadid,jdbcType=VARCHAR},
       signature = #{signature,jdbcType=LONGVARCHAR}
-    where userId = #{userid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.User" >
     update user
@@ -282,6 +282,6 @@
       userMail = #{usermail,jdbcType=VARCHAR},
       userSex = #{usersex,jdbcType=VARCHAR},
       userHeadId = #{userheadid,jdbcType=VARCHAR}
-    where userId = #{userid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

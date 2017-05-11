@@ -1,7 +1,7 @@
 package com.gzu.bbs.pojo;
 
 public class User {
-    private Integer userid;
+    private String userid;
 
     private String userpassword;
 
@@ -15,12 +15,12 @@ public class User {
 
     private String signature;
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getUserpassword() {
