@@ -374,4 +374,37 @@
       plateId = #{plateid,jdbcType=INTEGER}
     where postId = #{postid,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  <!--**********************************************************************************************  -->
+  <select id="selectPostPage" parameterType="postVo" resultType="postCustom">
+  	SELECT * FROM post
+  	<where>
+	  	<if test="postCustom.postid!=null">
+	  		AND plateId=#{postCustom.postid}
+	  	</if>
+	  	<if test="postCustom.clickamount!=null">
+	  		AND clickamount>#{postCustom.clickamount}
+	  	</if>
+	  	<if test="postCustom.posttitle!=null">
+	  		AND posttitle LIKE '%${postCustom.posttitle}%' 
+	  	</if>
+		<if test="postCustom.username!=null">
+	  		AND username LIKE '%${postCustom.username}%' 
+	  	</if>
+	  	<if test="postCustom.content!=null">
+	  		AND content LIKE '%${postCustom.content}%' 
+	  	</if>
+	  	<if test="begin!=null">
+	  		LIMIT #{begin},
+	  	</if>
+	  	<if test="size!=null">
+	  		#{size};
+	  	</if>
+  	</where>
+  </select>
+  
+  
 </mapper>

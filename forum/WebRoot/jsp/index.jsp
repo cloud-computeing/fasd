@@ -23,7 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  热点：<br>
+<div style="width: 200;background-color: green;float: left;" >
+	  热点：<br>
  <c:forEach var="plate" items="${allPlate['热点'] }">
  	${plate.plateid }
     ${plate.platename }
@@ -41,5 +42,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	</c:forEach>
     	</c:if>
     </c:forEach>
+</div>
+<div style="background-color: red;width: 800;float: left;">
+<c:forEach var="post" items="${allPost}">
+		${post.postid}
+		${post.posttitle}
+		${post.userid}
+		${post.username}
+		${post.clickamount}
+		${post.goodamount}
+		${post.replyamount}
+		${post.latestreplytime}
+		${post.pictureid}
+		${post.topflag}
+		${post.plateid}
+		${post.content}
+		<br>
+	</c:forEach>
+</div>
+	
   </body>
 </html>

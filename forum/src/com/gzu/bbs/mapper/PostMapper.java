@@ -1,9 +1,13 @@
 package com.gzu.bbs.mapper;
 
-import com.gzu.bbs.pojo.Post;
-import com.gzu.bbs.pojo.PostExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gzu.bbs.pojo.Post;
+import com.gzu.bbs.pojo.PostCustom;
+import com.gzu.bbs.pojo.PostExample;
+import com.gzu.bbs.pojo.PostVo;
 
 public interface PostMapper {
     int countByExample(PostExample example);
@@ -33,4 +37,6 @@ public interface PostMapper {
     int updateByPrimaryKeyWithBLOBs(Post record);
 
     int updateByPrimaryKey(Post record);
+    //根据postvo类里面的条件来查询post在进行分页
+    List<PostCustom> selectPostPage(PostVo postVo);
 }
