@@ -39,4 +39,6 @@ public interface PostMapper {
     int updateByPrimaryKey(Post record);
     //根据postvo类里面的条件来查询post在进行分页
     List<PostCustom> selectPostPage(PostVo postVo);
+    //查询某类帖子总数 
+    int selectSumPost(PostVo postVo);
 }

@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  热点：<br>
  <c:forEach var="plate" items="${allPlate['热点'] }">
  	${plate.plateid }
-    ${plate.platename }
+    <a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${plate.plateid }">${plate.platename }</a>
     ${plate.moderatorid }
     ${plate.platetypeid }<br>
  </c:forEach>
@@ -36,7 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		${plates.key}:<br>
 		    	<c:forEach var="plate" items="${plates.value}">
 		    		${plate.plateid }
-		    		${plate.platename }
+		    		<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${plate.plateid }">
+		    			${plate.platename }</a>
 		    		${plate.moderatorid }
 		    		${plate.platetypeid }<br>
 		    	</c:forEach>
@@ -58,7 +59,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		${post.plateid}
 		${post.content}
 		<br>
-	</c:forEach>
+</c:forEach>
+	<%-- <form action="${pageContext.request.contextPath}/index.action">
+		<input type="hidden" name="postCustom.plateid" value="${allPost[0].plateid" }>
+		<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=1">
+			首页</a>
+		<a>首页</a>
+		<a>上一页</a>
+		<a>下一页</a>
+		<a>尾页</a>
+	</form> --%>
+	
+	<c:choose>
+				<c:when test="${currentPage==1}">
+					首页
+					上一页
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=1">
+						首页</a>
+					<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${currentPage-1}">
+						上一页</a>
+				</c:otherwise>
+	</c:choose>
+	<c:choose>
+				<c:when test="${currentPage==pagecount}">
+					下一页
+					尾页
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${currentPage+1}">
+						下一页</a>
+					<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${pagecount}">
+						尾页</a>
+				</c:otherwise>
+	</c:choose>
 </div>
 	
   </body>

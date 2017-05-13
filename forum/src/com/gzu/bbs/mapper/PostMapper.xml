@@ -379,11 +379,15 @@
   
   
   <!--**********************************************************************************************  -->
+ <!--分页  -->
   <select id="selectPostPage" parameterType="postVo" resultType="postCustom">
   	SELECT * FROM post
   	<where>
 	  	<if test="postCustom.postid!=null">
-	  		AND plateId=#{postCustom.postid}
+	  		AND postId=#{postCustom.postid}
+	  	</if>
+	  	<if test="postCustom.plateid!=null">
+	  		AND plateId=#{postCustom.plateid}
 	  	</if>
 	  	<if test="postCustom.clickamount!=null">
 	  		AND clickamount>#{postCustom.clickamount}
@@ -405,6 +409,17 @@
 	  	</if>
   	</where>
   </select>
-  
+  <!-- 查询某类帖子总数 -->
+  	<select id="selectSumPost" parameterType="postVo" resultType="Integer">
+  		SELECT count(*) FROM post
+  		<where>
+  			<if test="postCustom.clickamount!=null">
+	  			AND clickamount>#{postCustom.clickamount}
+	  		</if>
+  			<if test="postCustom.plateid!=null">
+	  			AND plateId=#{postCustom.plateid}
+	  		</if>
+  		</where>
+  	</select>
   
 </mapper>

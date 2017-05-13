@@ -17,5 +17,9 @@ private PostMapper postMapper;
 		List<PostCustom>allPost=postMapper.selectPostPage(postVo);
 		return allPost;
 	}
+	public int querySumPost(PostVo postVo) throws Exception {
+		int sum=postMapper.selectSumPost(postVo);
+		return sum;
+	}
 
 }
