@@ -32,7 +32,7 @@ public class PostController {
 	public String like(Model model,HttpServletRequest request,Integer postId){
 		String userid=Global.getUserId(request);
 		if(userid==null){
-			model.addAttribute("url", "${pageContext.request.contextPath }/index.action");
+			model.addAttribute("url", "index.jsp");
 			model.addAttribute("message", "未登录");
 			return "forward";
 		}else{
