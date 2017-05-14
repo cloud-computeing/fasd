@@ -45,9 +45,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </c:forEach>
 </div>
 <div style="background-color: red;width: 800;float: left;">
+	
 <c:forEach var="post" items="${allPost}">
 		${post.postid}
-		${post.posttitle}
+		<a href="${pageContext.request.contextPath}/post/postDetails.action?postId=${post.postid}">
+			${post.posttitle}</a>
 		${post.userid}
 		${post.username}
 		${post.clickamount}
@@ -58,17 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		${post.topflag}
 		${post.plateid}
 		${post.content}
+		${post.posttime}
 		<br>
 </c:forEach>
-	<%-- <form action="${pageContext.request.contextPath}/index.action">
-		<input type="hidden" name="postCustom.plateid" value="${allPost[0].plateid" }>
-		<a href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=1">
-			首页</a>
-		<a>首页</a>
-		<a>上一页</a>
-		<a>下一页</a>
-		<a>尾页</a>
-	</form> --%>
 	
 	<c:choose>
 				<c:when test="${currentPage==1}">

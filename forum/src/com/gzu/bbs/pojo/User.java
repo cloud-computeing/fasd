@@ -14,8 +14,18 @@ public class User {
     private String userheadid;
 
     private String signature;
+    
+    private int flag;
 
-    public String getUserid() {
+    public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	public String getUserid() {
         return userid;
     }
 

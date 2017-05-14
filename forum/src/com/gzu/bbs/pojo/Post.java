@@ -26,8 +26,18 @@ public class Post {
     private Integer plateid;
 
     private String content;
+    
+    private Date posttime;
 
-    public Integer getPostid() {
+    public Date getPosttime() {
+		return posttime;
+	}
+
+	public void setPosttime(Date posttime) {
+		this.posttime = posttime;
+	}
+
+	public Integer getPostid() {
         return postid;
     }
 

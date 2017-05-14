@@ -379,27 +379,50 @@
   
   
   <!--**********************************************************************************************  -->
+ <sql id="fromPost">
+ 	SELECT * FROM post
+ </sql>
+ <sql id="postIdPost">
+ 	AND postId=#{postCustom.postid}
+ </sql>
+  <sql id="plateIdPost">
+ 	AND plateId=#{postCustom.plateid}
+ </sql>
+  <sql id="clickamountPost">
+ 	AND clickamount>#{postCustom.clickamount}
+ </sql>
+  <sql id="posttitlePost">
+ 	AND posttitle LIKE '%${postCustom.posttitle}%' 
+ </sql>
+  <sql id="usernamePost">
+ 	AND username LIKE '%${postCustom.username}%' 
+ </sql>
+  <sql id="contentPost">
+ 	AND content LIKE '%${postCustom.content}%' 
+ </sql>
+ 
+
  <!--分页  -->
   <select id="selectPostPage" parameterType="postVo" resultType="postCustom">
-  	SELECT * FROM post
+  	<include refid="fromPost"/>
   	<where>
 	  	<if test="postCustom.postid!=null">
-	  		AND postId=#{postCustom.postid}
+	  		<include refid="postIdPost"/>
 	  	</if>
 	  	<if test="postCustom.plateid!=null">
-	  		AND plateId=#{postCustom.plateid}
+	  		<include refid="plateIdPost"/>
 	  	</if>
 	  	<if test="postCustom.clickamount!=null">
-	  		AND clickamount>#{postCustom.clickamount}
+	  		<include refid="clickamountPost"/>
 	  	</if>
 	  	<if test="postCustom.posttitle!=null">
-	  		AND posttitle LIKE '%${postCustom.posttitle}%' 
+	  		<include refid="posttitlePost"/>
 	  	</if>
 		<if test="postCustom.username!=null">
-	  		AND username LIKE '%${postCustom.username}%' 
+	  		<include refid="usernamePost"/>
 	  	</if>
 	  	<if test="postCustom.content!=null">
-	  		AND content LIKE '%${postCustom.content}%' 
+	  		<include refid="contentPost"></include>
 	  	</if>
 	  	<if test="begin!=null">
 	  		LIMIT #{begin},
@@ -414,12 +437,20 @@
   		SELECT count(*) FROM post
   		<where>
   			<if test="postCustom.clickamount!=null">
-	  			AND clickamount>#{postCustom.clickamount}
+	  			<include refid="clickamountPost"/>
 	  		</if>
   			<if test="postCustom.plateid!=null">
-	  			AND plateId=#{postCustom.plateid}
+	  			<include refid="plateIdPost"/>
 	  		</if>
   		</where>
   	</select>
-  
+  <!--查询帖子详细信息  -->
+  	<select id="selectPostById" parameterType="Integer" resultType="postCustom">
+  		<include refid="fromPost"/>
+  		WHERE postId=#{id}
+  	</select>
+  	<!--点赞  -->
+  	<update id="updateLike" parameterType="int">
+  		UPDATE post SET goodAmount=goodAmount+1 WHERE postId=#{id};
+  	</update>
 </mapper>

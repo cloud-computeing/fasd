@@ -8,6 +8,7 @@ import com.gzu.bbs.pojo.Post;
 import com.gzu.bbs.pojo.PostCustom;
 import com.gzu.bbs.pojo.PostExample;
 import com.gzu.bbs.pojo.PostVo;
+import com.gzu.bbs.pojo.ThumpupnumKey;
 
 public interface PostMapper {
     int countByExample(PostExample example);
@@ -41,4 +42,8 @@ public interface PostMapper {
     List<PostCustom> selectPostPage(PostVo postVo);
     //查询某类帖子总数 
     int selectSumPost(PostVo postVo);
+    //根据帖子id查询帖子详细信息
+    PostCustom selectPostById(Integer id);
+    //点赞
+    int updateLike(Integer id);
 }
