@@ -89,6 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:otherwise>
 	</c:choose>
 </div>
-	
+	<a href="jsp/Home.jsp">aaa</a>
   </body>
 </html>

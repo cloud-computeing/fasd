@@ -29,15 +29,11 @@ import com.sun.xml.internal.ws.wsdl.parser.InaccessibleWSDLException;
 @RequestMapping(value="/admin")
 public class AdminController {
 	@Autowired
-	private AdminService adminService;
-	@Autowired
 	private ModeratorService moderatorService;
 	@Autowired 
 	private PlateService plateService;
 	@Autowired
 	private PlatetypeService platetypeService;
-	@Autowired
-	private UserMapper userMapper;
 	
 	/**
 	 * 版主的controller
@@ -52,7 +48,7 @@ public class AdminController {
 	public String oneModerator(Model model,Moderator moderator,Integer id) throws Exception{
 		moderator = moderatorService.selectModerator(id);
 		model.addAttribute("moderator",moderator);
-		return "moderator/updateModerator";
+		return "admin/moderator/updateModerator";
 	}
 	
 	//这里是查询所有的版主信息
@@ -61,7 +57,7 @@ public class AdminController {
 		List<Moderator> allModerators = new ArrayList<Moderator>();
 		allModerators = moderatorService.allModerators();
 		model.addAttribute("allModerators", allModerators);
-		return "moderator/allModerator";
+		return "admin/moderator/allModerator";
 	}
 	
 	//这里是插入版主的信息
@@ -73,13 +69,13 @@ public class AdminController {
 			moderator2 = moderatorService.selectModerator(moderator.getModeratorid());
 			if(moderator2!=null){
 				if((moderator2.getModeratorid()).equals(moderator.getModeratorid())){
-					return "moderator/insertModerator";//这里是id重复了，最好是跳转页
+					return "admin/moderator/insertModerator";//这里是id重复了，最好是跳转页
 				}
 			}
 			int a = moderatorService.insertModerator(moderator);
 			return "redirect:allModerator.action";
 		}
-		return "moderator/insertModerator";
+		return "admin/moderator/insertModerator";
 	}
 	
 	//这里是删除版主的信息
@@ -92,7 +88,7 @@ public class AdminController {
 	//这里是更新版主信息
 	@RequestMapping(value="/updateModerator")
 	public String updateModerator(Moderator moderator,Integer id) throws Exception{
-		int a = moderatorService.updateModerator(moderator);
+		moderatorService.updateModerator(moderator);
 		return "redirect:allModerator.action";
 	}
 	
@@ -102,7 +98,7 @@ public class AdminController {
 		List<Moderator> someModerators = new ArrayList<Moderator>();
 		someModerators = moderatorService.someModerators(name);
 		model.addAttribute("someModerators", someModerators);
-		return "moderator/someModerator";
+		return "admin/moderator/someModerator";
 	}
 	
 	//查询版主管理的板块
@@ -111,7 +107,7 @@ public class AdminController {
 		List<Plate> somePlates = new ArrayList<Plate>();
 		somePlates = moderatorService.somePlates(id);
 		model.addAttribute("somePlates", somePlates);
-		return "moderator/somPlate";
+		return "admin/moderator/somPlate";
 	}
 	//************************************板块和板块类型的分界线********************************
 	/**
@@ -126,7 +122,7 @@ public class AdminController {
 		List<PlatetypeCustom> allPlatetypes  = new ArrayList<PlatetypeCustom>();
 		allPlatetypes = platetypeService.queryAllType();
 		model.addAttribute("allPlatetypes", allPlatetypes);
-		return "plateType/allPlateType";
+		return "admin/plateType/allPlateType";
 	}
 	
 	//查询板块类型的详细信息
@@ -134,13 +130,13 @@ public class AdminController {
 	public String onePlateType(Model model,Platetype platetype,Integer id)throws Exception{
 		platetype = platetypeService.onePlateType(id);
 		model.addAttribute("platetype", platetype);
-		return "plateType/updatePlateType";
+		return "admin/plateType/updatePlateType";
 	}
 	//删除板块类型的信息
 	@RequestMapping(value="/deletPlateType")
 	public String deletPlateType(Integer id)throws Exception{
 		int a = platetypeService.deletPlateType(id);
-		return "redirect:allPlateType.action";
+		return "admin/redirect:allPlateType.action";
 	}
 	//添加板块类型的信息
 	@RequestMapping(value="/insertPlateType")
@@ -151,20 +147,20 @@ public class AdminController {
 			Platetype platetype2 = new Platetype();
 			platetype2 = platetypeService.onePlateType(plateType.getPlatetypeid());
 			if(platetype2!=null){
-				return "plateType/insertPlateType";
+				return "admin/plateType/insertPlateType";
 			}
 			if(moderator==null){
-				return "plateType/insertPlateType";
+				return "admin/plateType/insertPlateType";
 			}
 			int a = platetypeService.insertPlateType(plateType);
 			return "redirect:allPlateType.action";
 		}
-		return "plateType/insertPlateType";
+		return "admin/plateType/insertPlateType";
 	}
 	//更新板块类型的信息
 	@RequestMapping(value="/updatePlateType")
 	public String updatePlateType(Model model,Integer id,Platetype platetype)throws Exception{
-		 int a = platetypeService.updatePlateType(platetype);
+		platetypeService.updatePlateType(platetype);
 		return "redirect:allPlateType.action";
 	}
 	//查询板块类型关联的板块
@@ -173,7 +169,7 @@ public class AdminController {
 		List<Plate> somePlates = new ArrayList<Plate>();
 		somePlates = platetypeService.somePlate(id);
 		model.addAttribute("somePlates", somePlates);
-		return "plateType/somPlate";
+		return "admin/plateType/somPlate";
 	}
 	//*********************************************板块类型和板块的分界线**********************************************
 	/**
@@ -188,7 +184,7 @@ public class AdminController {
 		List<Plate> allPlates = new ArrayList<Plate>();
 		allPlates = plateService.allPlates();
 		model.addAttribute("allPlates", allPlates);
-		return "plate/allPlate";
+		return "admin/plate/allPlate";
 	}
 	
 	//板块详情
@@ -196,7 +192,7 @@ public class AdminController {
 	public String onePlate(Integer id,Model model,Plate plate)throws Exception{
 		plate = plateService.onePlate(id);
 		model.addAttribute("plate", plate);
-		return "plate/updatePlate";
+		return "admin/plate/updatePlate";
 	}
 	//添加板块信息
 	@RequestMapping(value="/insertPlates")
@@ -210,24 +206,24 @@ public class AdminController {
 			platetype = platetypeService.onePlateType(plate.getPlatetypeid());
 			plate2 = plateService.onePlate(plate.getPlateid());
 			if((plate2==null)&&(moderator!=null)&&(platetype!=null)){
-				int a = plateService.insertPlate(plate);
+				plateService.insertPlate(plate);
 				return "redirect:allPlates.action";
 			}
 		}
-		return "plate/insertPlate";
+		return "admin/plate/insertPlate";
 	}
 	
 	//删除板块
 	@RequestMapping(value="/deletPlate")
 	public String deletPlate(Integer id)throws Exception{
-		int a = plateService.deletPlate(id);
+		plateService.deletPlate(id);
 		return "redirect:allPlates.action";
 	}
 	
 	//跟新板块信息
 	@RequestMapping(value="/updatePlate")
 	public String updatePlate(Plate plate,Model model) throws Exception{
-		int a = plateService.updatePlate(plate);
+		plateService.updatePlate(plate);
 		return "redirect:allPlates.action";
 	}
 	
@@ -237,7 +233,7 @@ public class AdminController {
 		List<Plate> somePlates = new ArrayList<Plate>();
 		somePlates = plateService.somePlates(id);
 		model.addAttribute("somePlates", somePlates);
-		return "plate/somePlate";
+		return "admin/plate/somePlate";
 	}
 	//*****************************************************板块和用户的分界线*******************************************************
 	//查询全部

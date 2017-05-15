@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath }/jsp/plateType/insertPlateType.jsp">添加新的板块类型</a><br/>
+<a href="${pageContext.request.contextPath }/jsp/admin/plateType/insertPlateType.jsp">添加新的板块类型</a><br/>
 
 <table>
 <tr>

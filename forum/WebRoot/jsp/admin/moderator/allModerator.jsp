@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath }/jsp/moderator/insertModerator.jsp">添加新的版主</a><br/>
+<a href="${pageContext.request.contextPath }/jsp/admin/moderator/insertModerator.jsp">添加新的版主</a><br/>
 <form action="${pageContext.request.contextPath }/admin/someModerator.action">
 <input type="text" name="name"> <input type="submit" value='搜索'/>
 </form>

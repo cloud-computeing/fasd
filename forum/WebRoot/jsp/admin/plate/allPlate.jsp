@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath }/jsp/plate/insertPlate.jsp">添加新的板块</a><br/>
+<a href="${pageContext.request.contextPath }/jsp/admin/plate/insertPlate.jsp">添加新的板块</a><br/>
 
 <form action="${pageContext.request.contextPath }/admin/somePlates.action">
 <input type="text" name="id"> <input type="submit" value='搜索'/>
