@@ -33,7 +33,6 @@ public interface ModeratorMapper {
     
     List<Moderator> SelectAllModerators();
     List<Moderator> selectBy(String name);
-    List<Platetype> selectPlateType(Integer id);
     List<Plate> selectPlate(Integer id);
     List<Plate> somePlate(Integer id);
 }

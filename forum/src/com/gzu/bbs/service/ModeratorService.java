@@ -28,8 +28,6 @@ public interface ModeratorService {
 	public int deletModerator(Integer id)throws Exception;
 	//版主的修改
 	public int updateModerator(Moderator moderator)throws Exception;
-	//查询版主管理的板块类型
-	public List<Platetype> somPlatetypes(Integer id)throws Exception;
 	//查询版主管理的板块
 	public List<Plate> somePlates(Integer id)throws Exception;
 }

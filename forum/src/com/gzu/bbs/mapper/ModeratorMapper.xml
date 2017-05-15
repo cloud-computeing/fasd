@@ -218,10 +218,6 @@
   <select id="selectBy" parameterType="java.lang.String" resultType="com.gzu.bbs.pojo.Moderator" >
     select * from moderator where moderatorName like '%${value}%'
   </select>
-  <!-- 查询版主管理的板块类型 -->
-  <select id="selectPlateType" parameterType="java.lang.Integer" resultType="com.gzu.bbs.pojo.Platetype">
-  	SELECT * from platetype WHERE moderatorId = ${value}
-  </select>
   <!-- 查询版主管理的板块 -->
   <select id="selectPlate" parameterType="java.lang.Integer" resultType="com.gzu.bbs.pojo.Plate">
   	SELECT * from plate WHERE moderatorId = ${value}

@@ -38,10 +38,6 @@ private ModeratorMapper moderatorMapper;
 	public int updateModerator(Moderator moderator) throws Exception {
 		return moderatorMapper.updateByPrimaryKey(moderator);
 	}
-//查询版主管理的板块类型
-	public List<Platetype> somPlatetypes(Integer id) throws Exception {
-		return moderatorMapper.selectPlateType(id);
-	}
 //查询版主管理的板块
 	public List<Plate> somePlates(Integer id) throws Exception {
 		return moderatorMapper.selectPlate(id);

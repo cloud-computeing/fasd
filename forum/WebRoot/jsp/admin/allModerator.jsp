@@ -24,7 +24,6 @@
 	<td>${allModerators.moderatorheadid}</td>  
 	<td><a href="${pageContext.request.contextPath }/admin/deletModerator.action?id=${ allModerators.moderatorid}">删除</a></td>
 	<td><a href="${pageContext.request.contextPath }/admin/oneModerator.action?id=${ allModerators.moderatorid}">修改版主信息</a></td>
-	<td><a href="${pageContext.request.contextPath }/admin/plateType.action?id=${ allModerators.moderatorid}">查询版主管理的板块类型</a></td>
 	<td><a href="${pageContext.request.contextPath }/admin/plate.action?id=${ allModerators.moderatorid}">查询版主管理的板块</a></td>
 </tr>
 </c:forEach>

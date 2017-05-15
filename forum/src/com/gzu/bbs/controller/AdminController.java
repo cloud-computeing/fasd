@@ -105,14 +105,6 @@ public class AdminController {
 		return "moderator/someModerator";
 	}
 	
-	//查询版主管理的板块类型
-	@RequestMapping(value="/plateType")
-	public String selectPlateType(Integer id,Model model) throws Exception{
-		List<Platetype> somePlatetypes = new ArrayList<Platetype>();
-		somePlatetypes = moderatorService.somPlatetypes(id);
-		model.addAttribute("somePlatetypes", somePlatetypes);
-		return "moderator/somPlateType";
-	}
 	//查询版主管理的板块
 	@RequestMapping(value="/plate")
 	public String selectPlate(Integer id,Model model)throws Exception{
