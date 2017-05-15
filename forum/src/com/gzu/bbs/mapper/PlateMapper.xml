@@ -198,4 +198,12 @@
   <select id="selectByType" parameterType="int" resultType="plateCustom">
   	SELECT * FROM plate WHERE plateTypeId=#{id}
   </select>
+  <!-- 查询所有的板块信息 -->
+  <select id="SelectAllplates" resultType="com.gzu.bbs.pojo.Plate" >
+    select * from plate
+  </select>
+  <!-- 模糊查询板块信息 -->
+  <select id="SelectSomeplates" parameterType="java.lang.String" resultType="com.gzu.bbs.pojo.Plate" >
+    select * from plate where plateName like '%${value}%'
+  </select>
 </mapper>

@@ -31,4 +31,8 @@ public interface PlateMapper {
     
     //根据类型查询板块
     List<PlateCustom> selectByType(Integer typeid);
+    //查询所有的板块
+    List<Plate> SelectAllplates();
+    //模糊查询
+    List<Plate> SelectSomeplates(String id);
 }
