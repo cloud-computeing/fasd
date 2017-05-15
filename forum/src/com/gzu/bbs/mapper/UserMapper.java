@@ -33,4 +33,7 @@ public interface UserMapper {
     int updateByPrimaryKeyWithBLOBs(User record);
 
     int updateByPrimaryKey(User record);
+    
+    List<User> allUser();
+    List<User> someUser(String name);
 }

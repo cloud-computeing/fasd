@@ -19,6 +19,7 @@ public class PostController {
 	private PostService postService;
 	@RequestMapping(value="/postDetails")
 	public String postDetails(Model model,Integer postId) throws Exception{
+		postService.clickamount(postId);
 		Post post=postService.queryPostById(postId);
 		if(post==null){
 			return "error/error";

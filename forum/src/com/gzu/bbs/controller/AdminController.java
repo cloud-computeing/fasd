@@ -2,6 +2,7 @@ package com.gzu.bbs.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,13 +15,17 @@ import com.gzu.bbs.mapper.UserMapper;
 import com.gzu.bbs.pojo.Admin;
 import com.gzu.bbs.pojo.Moderator;
 import com.gzu.bbs.pojo.Plate;
+import com.gzu.bbs.pojo.PlateCustom;
 import com.gzu.bbs.pojo.Platetype;
 import com.gzu.bbs.pojo.PlatetypeCustom;
+import com.gzu.bbs.pojo.PostCustom;
+import com.gzu.bbs.pojo.PostVo;
 import com.gzu.bbs.pojo.User;
 import com.gzu.bbs.service.AdminService;
 import com.gzu.bbs.service.ModeratorService;
 import com.gzu.bbs.service.PlateService;
 import com.gzu.bbs.service.PlatetypeService;
+import com.gzu.bbs.service.PostService;
 import com.gzu.bbs.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.sun.xml.internal.ws.wsdl.parser.InaccessibleWSDLException;
@@ -34,6 +39,10 @@ public class AdminController {
 	private PlateService plateService;
 	@Autowired
 	private PlatetypeService platetypeService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private PostService postService;
 	
 	/**
 	 * 版主的controller
@@ -237,25 +246,58 @@ public class AdminController {
 	}
 	//*****************************************************板块和用户的分界线*******************************************************
 	//查询全部
-	/*
-	 * @RequestMapping(value="/allUser")
+	 @RequestMapping(value="/allUser")
 	public String allUsers(Model model)throws Exception{
 		List<User> allUsers = new ArrayList<User>();
-		allUsers = userMapper.allUsers();
+		allUsers = userService.allUser();
 		model.addAttribute("allUsers", allUsers);
-		return "user/allUser";
+		return "admin/user/allUser";
 	}
-	*/
+
 	
 	//模糊查询
-	/*
 	@RequestMapping(value="/someUser")
-	public String someUsers(String id,Model model){
+	public String someUsers(String id,Model model) throws Exception{
 		List<User> someUsers = new ArrayList<User>();
-		someUsers = userMapper.someUsers(id);
+		someUsers = userService.someUsers(id);
 		model.addAttribute("someUsers", someUsers);
-		return "user/someUser";
+		return "admin/user/someUser";
 	}
-	*/
+	
+	//用户信息详情
+	@RequestMapping(value="/oneUser")
+	public String oneUser(User user,Model model,String id) throws Exception{
+		user = userService.selectUser(id);
+		model.addAttribute("user", user);
+		return "admin/user/updateUser";
+	}
+	
+	//添加用户信息
+	@RequestMapping(value="/insertUser")
+	public String insertUser(User user)throws Exception{
+		if((user.getUsersex()!=null)||(user.getUserpassword()!=null)||(user.getUsername()!=null)||(user.getUsermail()!=null)||(user.getUserid()!=null)||(user.getUserheadid()!=null)
+				||(user.getSignature()!=null)){
+			userService.insertUser(user);
+			return "redirect:allUser.action";
+		}
+		return "admin/user/insertUser";
+	}
+	
+	//删除用户信息
+	@RequestMapping(value="/deletUser")
+	public String deletUser(String id) throws Exception{
+		userService.deletUser(id);
+		return "redirect:allUser.action";
+	}
+	
+	//更新用户信息
+	@RequestMapping(value="/updateUser")
+	public String updateUser(User user) throws Exception{
+		userService.updateUser(user);
+		return "redirect:allUser.action";
+	}
+	
+	//用户信息的分页
+	
 	
 }

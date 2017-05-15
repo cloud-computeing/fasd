@@ -424,13 +424,13 @@
 	  	<if test="postCustom.content!=null">
 	  		<include refid="contentPost"></include>
 	  	</if>
+  	</where>
 	  	<if test="begin!=null">
 	  		LIMIT #{begin},
 	  	</if>
 	  	<if test="size!=null">
 	  		#{size};
 	  	</if>
-  	</where>
   </select>
   <!-- 查询某类帖子总数 -->
   	<select id="selectSumPost" parameterType="postVo" resultType="Integer">
@@ -452,5 +452,9 @@
   	<!--点赞  -->
   	<update id="updateLike" parameterType="int">
   		UPDATE post SET goodAmount=goodAmount+1 WHERE postId=#{id};
+  	</update>
+  	<!--点击数加一  -->
+  	<update id="updateClickamount" parameterType="int">
+  		UPDATE post SET clickAmount=clickAmount+1 WHERE postId=#{id};
   	</update>
 </mapper>

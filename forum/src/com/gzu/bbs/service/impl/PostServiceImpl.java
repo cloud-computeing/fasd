@@ -40,5 +40,9 @@ public class PostServiceImpl implements PostService {
 		postMapper.updateLike(likeVo.getToKey().getPostid());
 		return 1;
 	}
+	public int clickamount(Integer id) throws Exception {
+		postMapper.updateClickamount(id);
+		return 1;
+	}
 
 }

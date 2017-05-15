@@ -127,10 +127,10 @@
   <insert id="insert" parameterType="com.gzu.bbs.pojo.User" >
     insert into user (userId, userPassword, userName, 
       userMail, userSex, userHeadId, 
-      signature)
+      signature,flag)
     values (#{userid,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{usermail,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, #{userheadid,jdbcType=VARCHAR}, 
-      #{signature,jdbcType=LONGVARCHAR})
+      #{signature,jdbcType=LONGVARCHAR},#{flag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.User" >
     insert into user
@@ -281,7 +281,17 @@
       userName = #{username,jdbcType=VARCHAR},
       userMail = #{usermail,jdbcType=VARCHAR},
       userSex = #{usersex,jdbcType=VARCHAR},
-      userHeadId = #{userheadid,jdbcType=VARCHAR}
+      userHeadId = #{userheadid,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER}
     where userId = #{userid,jdbcType=VARCHAR}
   </update>
+  
+  <select id="allUser" resultType="com.gzu.bbs.pojo.User">
+  select * from user
+  </select>
+  <select id="someUser" parameterType="java.lang.String" resultType="com.gzu.bbs.pojo.User">
+  select * from user where username like '%${value}%'
+  </select>
+  
 </mapper>

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.gzu.bbs.pojo.PostCustom;
 import com.gzu.bbs.pojo.PostVo;
-import com.gzu.bbs.pojo.ThumpupnumKey;
 import com.gzu.bbs.pojo.LikeVo;
 
 
@@ -20,4 +19,6 @@ public interface PostService {
 	public PostCustom queryPostById(Integer id) throws Exception;
 	//点赞
 	public int like(LikeVo likeVo);
+	//用户点击帖子，点击数甲1
+	public int clickamount(Integer id) throws Exception;
 }

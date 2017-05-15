@@ -25,42 +25,44 @@ public class IndexController {
 	@Autowired
 	private PostService postService;
 	@RequestMapping(value="/index")
-	public String index(Model model,PostVo postVo,Integer currentPage,Integer size) throws Exception{
+	public String index(Model model,PostVo postVo) throws Exception{
 		//查询全部的板块
 		Map<String,List<PlateCustom>> allPlate=plateService.queryAllPlateByType();
 		//某类总帖子数
-		int sum=0;
-		int pagecount=0;
-		size=1;//每页显示多少条数据
+		postVo.setSum(0);
+		postVo.setPagecount(0);
+		postVo.setSize(1);//每页显示多少条数据
 		//进行帖子分页
-		if(postVo.getPostCustom()==null){//默认进入热帖榜
-			currentPage=1;
+		if(postVo.getPostCustom()==null){//默认进入热点
+			postVo.setCurrentPage(1);
 			PostCustom p=new PostCustom();
+			p.setPlateid(allPlate.get("热点").get(0).getPlateid());
 			postVo.setBegin(0);
-			postVo.setSize(size);
-			p.setClickamount(50);
 			postVo.setPostCustom(p);
-		}else if (currentPage==null||currentPage==0) {
-			/*if(" ".equals(postVo.getPostCustom().getPosttitle())){
-				postVo.getPostCustom().setPosttitle(null);
-			}*/
-			currentPage=1;
+		}else if (postVo.getCurrentPage()==null||postVo.getCurrentPage()==0) {
+			postVo.setCurrentPage(1);
 			postVo.setBegin(0);
-			postVo.setSize(size);
+			if(postVo.getPostCustom().getPosttitle()==null&&" ".equals(postVo.getPostCustom().getPosttitle())){
+				
+				postVo.getPostCustom().setPosttitle(null);
+			}
+			
+			
+			
 			/*postVo.setBegin((currentPage-1)*size);
 			postVo.setSize(size);*/
 			
 		}else{
-			postVo.setBegin((currentPage-1)*size);
-			postVo.setSize(size);
+			postVo.setBegin((postVo.getCurrentPage()-1)*postVo.getSize());
 		}
-		sum=postService.querySumPost(postVo);
-		pagecount=(int)sum/size;
+		postVo.setSum(postService.querySumPost(postVo));
+		postVo.setPagecount((int)(postVo.getSum()/postVo.getSize())+1);
 		List<PostCustom> allPost=postService.queryPostPage(postVo);
 		//设置某板块的全部帖子总数,总页数，当前页
-		model.addAttribute("sum", sum);
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("pagecount", pagecount);
+		model.addAttribute("postVo", postVo);
+		/*model.addAttribute("sum", postVo.getSum());
+		model.addAttribute("currentPage", postVo.getCurrentPage());
+		model.addAttribute("pagecount", postVo.getPagecount());*/
 		if(allPlate==null || allPost==null){
 			return "error/error";
 		}else{

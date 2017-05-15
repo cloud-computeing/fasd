@@ -46,4 +46,6 @@ public interface PostMapper {
     PostCustom selectPostById(Integer id);
     //点赞
     int updateLike(Integer id);
+    //点击数加一
+    int updateClickamount(Integer id);
 }

@@ -27,5 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      %>
     <a href="${pageContext.request.contextPath }/admin/test.action?adminid=10010">测试</a>
     <a href="${pageContext.request.contextPath }/index.action">主页</a>
+    
   </body>
 </html>
