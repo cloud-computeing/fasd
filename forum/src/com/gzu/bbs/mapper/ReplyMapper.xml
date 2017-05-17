@@ -132,7 +132,7 @@
       #{replyername,jdbcType=VARCHAR}, #{replytime,jdbcType=DATE}, #{replytoobjectid,jdbcType=VARCHAR}, 
       #{replycontent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Reply" >
+  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.ReplyCustom" >
     insert into reply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -284,4 +284,10 @@
       replyToObjectId = #{replytoobjectid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  <!-- 查询某帖子的所有评论 -->
+  <select id="selectReplyByPid" parameterType="int" resultType="replyCustom">
+  	SELECT * FROM reply WHERE postId=#{id}
+  </select>
 </mapper>

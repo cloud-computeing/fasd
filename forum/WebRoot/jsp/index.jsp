@@ -255,10 +255,10 @@
 							<li class="float-li"><a class="btn-gray" href="">刷新</a>
 							</li>
 							<li class="top-search clearfix">
-								<form id="bbs_type_search" action="${pageContext.request.contextPath }/index.action?postCustom.plateid=1" method="get">
+								<form id="bbs_type_search" action="${pageContext.request.contextPath }/index.action?postCustom.plateid=${allPost[0].plateid}" method="get">
 									<input class="top-search-submit" value="" type="submit">
 									<input class="top-search-key off" name="postCustom.posttitle"
-										type="text"value="${postVo.postCustom.posttitle }">
+										type="text"<%-- value="${postVo.postCustom.posttitle }" --%>>
 								</form></li>
 						</ul>
 					</div>
@@ -295,7 +295,7 @@
 								<tr class="bg">
 									<td class="td-title faceblue"><span class="face"
 										title="普通帖"></span> <a
-										href="${pageContext.request.contextPath}/post/postDetails.action?postId=${post.postid}"
+										href="${pageContext.request.contextPath}/post/postDetails.action?postid=${post.postid}"
 										target="_blank"> ${post.posttitle}</a></td>
 									<td><a class="author" href="" target="_blank">${post.username}</a>
 									</td>
@@ -323,7 +323,7 @@
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
-						<c:when test="${postVo.currentPage==pagecount || postVo.sum==0}">
+						<c:when test="${postVo.currentPage ==postVo.pagecount}">
 					下一页
 					尾页
 				</c:when>

@@ -8,7 +8,6 @@ import com.gzu.bbs.pojo.Post;
 import com.gzu.bbs.pojo.PostCustom;
 import com.gzu.bbs.pojo.PostExample;
 import com.gzu.bbs.pojo.PostVo;
-import com.gzu.bbs.pojo.ThumpupnumKey;
 
 public interface PostMapper {
     int countByExample(PostExample example);

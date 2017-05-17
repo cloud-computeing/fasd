@@ -1,6 +1,7 @@
 package com.gzu.bbs.mapper;
 
 import com.gzu.bbs.pojo.Reply;
+import com.gzu.bbs.pojo.ReplyCustom;
 import com.gzu.bbs.pojo.ReplyExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -14,7 +15,7 @@ public interface ReplyMapper {
 
     int insert(Reply record);
 
-    int insertSelective(Reply record);
+    int insertSelective(ReplyCustom record);
 
     List<Reply> selectByExampleWithBLOBs(ReplyExample example);
 
@@ -33,4 +34,8 @@ public interface ReplyMapper {
     int updateByPrimaryKeyWithBLOBs(Reply record);
 
     int updateByPrimaryKey(Reply record);
+    
+    //查看某帖子的所有评论
+    List<ReplyCustom> selectReplyByPid(Integer postid);
+    
 }
