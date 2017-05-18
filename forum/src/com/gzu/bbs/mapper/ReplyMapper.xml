@@ -156,6 +156,12 @@
       <if test="replycontent != null" >
         replyContent,
       </if>
+      <if test="floor != null" >
+        floor,
+      </if>
+      <if test="replytoobjectname != null" >
+        replytoobjectname,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -178,6 +184,12 @@
       </if>
       <if test="replycontent != null" >
         #{replycontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="replytoobjectname != null" >
+        #{replytoobjectname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

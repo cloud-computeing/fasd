@@ -16,6 +16,10 @@ public class Reply {
     private String replytoobjectid;
 
     private String replycontent;
+    
+    private Integer floor;
+    
+    private String replytoobjectname;
 
     public Integer getId() {
         return id;
@@ -72,4 +76,22 @@ public class Reply {
     public void setReplycontent(String replycontent) {
         this.replycontent = replycontent == null ? null : replycontent.trim();
     }
+
+	public Integer getFloor() {
+		return floor;
+	}
+
+	public void setFloor(Integer floor) {
+		this.floor = floor;
+	}
+
+	public String getReplytoobjectname() {
+		return replytoobjectname;
+	}
+
+	public void setReplytoobjectname(String replytoobjectname) {
+		this.replytoobjectname = replytoobjectname;
+	}
+    
+    
 }

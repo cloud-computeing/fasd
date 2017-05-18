@@ -1,9 +1,13 @@
 package com.gzu.bbs.service.impl;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sun.security.provider.certpath.CollectionCertStore;
 
 import com.gzu.bbs.mapper.PostMapper;
 import com.gzu.bbs.mapper.ReplyMapper;
@@ -25,6 +29,18 @@ public class PostServiceImpl implements PostService {
 	private ReplyMapper replyMapper;
 	public List<PostCustom> queryPostPage(PostVo postVo) throws Exception {
 		List<PostCustom>allPost=postMapper.selectPostPage(postVo);
+		Collections.sort(allPost, new Comparator<PostCustom>(){
+
+			public int compare(PostCustom o1, PostCustom o2) {
+				if(o1.getPosttime().getDate()>=o2.getPosttime().getDate()){
+					return 1;
+				}
+				if(o1.getPosttime().getDate()<o2.getPosttime().getDate()){
+					return 0;
+				}
+				return -1;
+			}
+		});
 		return allPost;
 	}
 	public int querySumPost(PostVo postVo) throws Exception {
@@ -54,6 +70,19 @@ public class PostServiceImpl implements PostService {
 	}
 	public List<ReplyCustom> queryReplyByPid(Integer pid) throws Exception {
 		List<ReplyCustom>all=replyMapper.selectReplyByPid(pid);
+		Collections.sort(all, new Comparator<ReplyCustom>() {
+
+			public int compare(ReplyCustom o1, ReplyCustom o2) {
+				if(o1.getFloor()>=o2.getFloor()){
+					return 1;
+				}
+				if(o1.getFloor()<o2.getFloor()){
+					return 0;
+				}
+				return -1;
+			}
+			
+		});
 		return all;
 	}
 

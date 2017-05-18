@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="jsp/css/index.css">
 <title>贵大论坛</title>
+<script type="text/javascript">
+function sub(currentPage){
+	document.getElementById("currentpage").value=currentPage;
+	//alert(document.getElementById("currentpage").value);
+	bbs_type_search.submit();
+}
+
+</script>
 </head>
 <body>
 
@@ -22,14 +30,11 @@
 						<div class="top-nav-fl clearfix">
 							<ul class="top-nav-menu-list clearfix">
 								<li class="top-nav-menu-li top-nav-menu-li-first"><a
-									class="top-nav-main-menu  on" title="" href="#">聚焦</a>
-								</li>
+									class="top-nav-main-menu  on" title="" href="#">聚焦</a></li>
 								<li class="top-nav-menu-li"><a class="top-nav-main-menu"
-									name="">贵大榜</a>
-								</li>
+									name="">贵大榜</a></li>
 								<li class="top-nav-menu-li"><span id="top_nav_menu_more"
-									class="top-nav-main-menu"> </span>
-								</li>
+									class="top-nav-main-menu"> </span></li>
 							</ul>
 						</div>
 						<div id="top_search" class="top-nav-fr top-search"
@@ -48,11 +53,9 @@
 						<div id="top_user_menu" class="top-nav-frt">
 							<ul class="top-nav-menu-list clearfix">
 								<li class="top-nav-menu-li  top-nav-menu-li-first"><a
-									id="js_login" class="top-nav-user-menu" href="">登录</a>
-								</li>
+									id="js_login" class="top-nav-user-menu" href="">登录</a></li>
 								<li class="top-nav-menu-li"><a id=""
-									class="top-nav-user-menu" href="" target="_blank">注册</a>
-								</li>
+									class="top-nav-user-menu" href="" target="_blank">注册</a></li>
 							</ul>
 						</div>
 					</div>
@@ -72,23 +75,19 @@
 					<ul class="nav_parent">
 						<li class="bbs_home"><a class="bbs_home_link" href="">论坛首页</a>
 						</li>
-						<li><a class="folder expand" href="">我的大学</a>
-						</li>
+						<li><a class="folder expand" href="">我的大学</a></li>
 					</ul>
 					<div class="line"></div>
 					<div class="nav_child_box" style="display: block;">
 						<ul class="nav_child">
-							<li class="child_hd"><span class="child_name">热点</span>
-							</li>
+							<li class="child_hd"><span class="child_name">热点</span></li>
 							<c:forEach var="plate" items="${allPlate['热点'] }">
 								<li><a class="child_link"
 									href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${plate.plateid }">
-	
-										
-									    	${plate.platename }
-		 								</a>
-								</li>
-							</c:forEach> 
+
+
+										${plate.platename } </a></li>
+							</c:forEach>
 						</ul>
 
 						<ul class="nav_child">
@@ -99,8 +98,7 @@
 									<c:forEach var="plate" items="${plates.value}">
 										<li><a class="child_link"
 											href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${plate.plateid }">
-												${plate.platename }</a>
-										</li>
+												${plate.platename }</a></li>
 									</c:forEach>
 								</c:if>
 							</c:forEach>
@@ -190,25 +188,23 @@
 									<div class="touban-pic"></div>
 									<div class="touban-guide clearfix"></div>
 								</div>
-								<div id="q_text_6_14">
+							<!-- 	<div id="q_text_6_14">
 									<div class="main_xiangguan2">
 										<ul style="overflow: hidden;">
 											<li class="list-item cf"><span class="name">广告</span>
 												<div class="item_box">
 													<a class="item ads-loc-holder" href="#" data-ads-order="31"
 														target="_blank" style="color: red;">
-														<div class="adsame-box"
-															style="position: relative; *zoom: 1;">
+														<div class="adsame-box" style="position: relative;*zoom: 1;">111111111
 															<div style="border: none;">
 																<iframe style="vertical-align: middle;" scrolling="no"
 																	src="" width="560px" height="30px" frameborder="0"></iframe>
 															</div>
-														</div> </a> <a></a> <a></a>
-												</div>
-											</li>
+														</div> </a>
+												</div></li>
 										</ul>
-									</div>
-								</div>
+									</div>广告
+								</div> -->
 							</div>
 						</div>
 					</div>
@@ -218,14 +214,10 @@
 					<div class="btns"></div>
 					<div class="main-list clearfix">
 						<ul class="clearfix" style="margin-top: 0px;">
-							<li><a href="#" title="贵阳">贵阳</a>
-							</li>
-							<li><a href="#" title="花城婚嫁">花城婚嫁</a>
-							</li>
-							<li><a href="#" title="贵阳消费">贵阳消费</a>
-							</li>
-							<li><a href="#" title="贵阳房产">贵阳房产</a>
-							</li>
+							<li><a href="#" title="贵阳">贵阳</a></li>
+							<li><a href="#" title="花城婚嫁">花城婚嫁</a></li>
+							<li><a href="#" title="贵阳消费">贵阳消费</a></li>
+							<li><a href="#" title="贵阳房产">贵阳房产</a></li>
 						</ul>
 					</div>
 				</div>
@@ -234,110 +226,109 @@
 						class="ico-gray"></span> </a> <a href="" target="_blank" title="">
 						春满人间 <span class="ico-gray"></span> </a>
 				</div>
-				<div class="bbs-type">
-					<div class="tab-list clearfix">
-						<ul class="clearfix">
-							<li class="curr"><a href="">默认</a>
-							</li>
-							<li><a href="">最新</a>
-							</li>
-							<li><a href="">问答</a>
-							</li>
-							<li class="more"><a href="">更多</a>
-							</li>
-							<li class="float-li"><a class="btn-gray btn-post" href="">发帖</a>
-							</li>
-							<li class="float-li fold-li">
-								<div id="bbs_btn_list" class="btn-list">
-									<a href=""><span class="arrow">提问</span>
-									</a>
-								</div></li>
-							<li class="float-li"><a class="btn-gray" href="">刷新</a>
-							</li>
-							<li class="top-search clearfix">
-								<form id="bbs_type_search" action="${pageContext.request.contextPath }/index.action?postCustom.plateid=${allPost[0].plateid}" method="get">
-									<input class="top-search-submit" value="" type="submit">
-									<input class="top-search-key off" name="postCustom.posttitle"
-										type="text"<%-- value="${postVo.postCustom.posttitle }" --%>>
-								</form></li>
-						</ul>
+				
+					<div class="bbs-type">
+						<div class="tab-list clearfix">
+						
+							<ul class="clearfix">
+								<li class="curr"><a href="">默认</a></li>
+								<li><a href="">最新</a></li>
+								<li><a href="">问答</a></li>
+								<li class="more"><a href="">更多</a></li>
+								<li class="float-li"><a class="btn-gray btn-post" href="">发帖</a>
+								</li>
+								<li class="float-li fold-li">
+									<div id="bbs_btn_list" class="btn-list">
+										<a href=""><span class="arrow">提问</span> </a>
+									</div>
+								</li>
+								<li class="float-li"><a class="btn-gray" href="">刷新</a></li>
+									<li class="top-search clearfix">
+								<form id="bbs_type_search" action="${pageContext.request.contextPath }/index.action">
+									<!-- 提交 --> <input
+										class="top-search-submit"type="button" onclick="sub(1)">
+									<input class="top-search-key off"
+										name="postCustom.posttitle" type="text" value="${postVo.postCustom.posttitle }">
+										<!--板块id  -->
+										<input type="hidden" name="postCustom.plateid"
+										value="${allPost[0].plateid}">
+										<input type="hidden" name="currentPage" id="currentpage">
+								</form>
+									</li>
+							</ul>
+					
+						</div>
+						<div class="type-list">
+							全部\ <a href="" rel="nofollow">游天下</a>\ <a href="" rel="nofollow">品美味</a>\
+							<a href="" rel="nofollow">宿酒店</a>\ <a href="" rel="nofollow">购实惠</a>\
+							<a href="" rel="nofollow">游乐场</a>\ <a href="" rel="nofollow">路线图</a>\
+							<a href="" rel="nofollow">求结伴</a>
+						</div>
 					</div>
-					<div class="type-list">
-						全部\ <a href="" rel="nofollow">游天下</a>\ <a href="" rel="nofollow">品美味</a>\
-						<a href="" rel="nofollow">宿酒店</a>\ <a href="" rel="nofollow">购实惠</a>\
-						<a href="" rel="nofollow">游乐场</a>\ <a href="" rel="nofollow">路线图</a>\
-						<a href="" rel="nofollow">求结伴</a>
-					</div>
-				</div>
-				<div class="mt5">
-					<table class="tab-bbs-list tab-bbs-list-2" width="100%"
-						cellspacing="0" border="0">
-						<colgroup>
-							<col class="col-title">
-							<col class=" ">
-							<col class=" ">
-							<col class="">
-							<col class="col-date">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="col">标题</th>
-								<th scope="col">作者</th>
-								<th scope="col">点击</th>
-								<th scope="col">回复</th>
-								<th scope="col">类型</th>
-								<th scope="col">发帖时间</th>
-							</tr>
-						</tbody>
-						<tbody>
-
-							<c:forEach var="post" items="${allPost}">
-								<tr class="bg">
-									<td class="td-title faceblue"><span class="face"
-										title="普通帖"></span> <a
-										href="${pageContext.request.contextPath}/post/postDetails.action?postid=${post.postid}"
-										target="_blank"> ${post.posttitle}</a></td>
-									<td><a class="author" href="" target="_blank">${post.username}</a>
-									</td>
-									<td>${post.clickamount}</td>
-									<td>${post.replyamount}</td>
-									<td title="2017-05-14 15:46" style="font-size: 12px;">${post.posttime}
-									</td>
+					<div class="mt5">
+						<table class="tab-bbs-list tab-bbs-list-2" width="100%"
+							cellspacing="0" border="0">
+							<colgroup>
+								<col class="col-title">
+								<col class=" ">
+								<col class=" ">
+								<col class="">
+								<col class="col-date">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="col">标题</th>
+									<th scope="col">作者</th>
+									<th scope="col">点击</th>
+									<th scope="col">回复</th>
+									<th scope="col">类型</th>
+									<th scope="col">发帖时间</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</tbody>
+							<tbody>
 
-					<c:choose>
-						<c:when test="${postVo.currentPage==1}">
+								<c:forEach var="post" items="${allPost}">
+									<tr class="bg">
+										<td class="td-title faceblue"><span class="face"
+											title="普通帖"></span> <a
+											href="${pageContext.request.contextPath}/post/postDetails.action?postid=${post.postid}"
+											target="_blank"> ${post.posttitle}</a>
+										</td>
+										<td><a class="author" href="" target="_blank">${post.username}</a>
+										</td>
+										<td>${post.clickamount}</td>
+										<td>${post.replyamount}</td>
+										<td title="2017-05-14 15:46" style="font-size: 12px;">${post.posttime}
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+						<c:choose>
+							<c:when test="${postVo.currentPage==1}">
 					首页
 					上一页
 				</c:when>
-						<c:otherwise>
-							<a
-								href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=1">
-								首页</a>
-							<a
-								href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${postVo.currentPage-1}">
-								上一页</a>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${postVo.currentPage ==postVo.pagecount}">
+							<c:otherwise>
+								<input type="button"value="首页"onclick="sub(1)">
+									
+								<input type="button"value="上一页"onclick="sub(${postVo.currentPage-1})">
+									
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${postVo.currentPage ==postVo.pagecount}">
 					下一页
 					尾页
 				</c:when>
-						<c:otherwise>
-							<a
-								href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${postVo.currentPage+1}">
-								下一页</a>
-							<a
-								href="${pageContext.request.contextPath}/index.action?postCustom.plateid=${allPost[0].plateid }&&currentPage=${postVo.pagecount}">
-								尾页</a>
-						</c:otherwise>
-					</c:choose>
-
-				</div>
+							<c:otherwise>
+								<input type="button"value="下一页"onclick="sub(${postVo.currentPage+1})">
+								<input type="button"value="尾页"onclick="sub(${postVo.pagecount})">
+							</c:otherwise>
+						</c:choose>
+					</div>
+				
 			</div>
 		</div>
 	</div>

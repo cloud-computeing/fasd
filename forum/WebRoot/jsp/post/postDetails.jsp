@@ -50,7 +50,7 @@
 					<c:if test="${r.replytoobjectid==reply.replyerid }">
 					
 					<div>
-						回复评论人:${r.replytoobjectid }  时间:${r.replytime }<br>
+						回复评论人:${r.replytoobjectname }  时间:${r.replytime }<br>
 						
 						回复内容:${r.replycontent } 
 					</div>
@@ -59,7 +59,7 @@
 				</c:forEach>
 				
 				<div>
-					楼层 :${reply.id }  回复 赞
+					楼层 :${reply.floor }  回复 赞
 				</div>
 		 	</c:if>
 		 	
