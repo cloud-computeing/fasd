@@ -18,7 +18,7 @@ public interface PostMapper {
 
     int insert(Post record);
 
-    int insertSelective(Post record);
+    int insertSelective(PostCustom record);
 
     List<Post> selectByExampleWithBLOBs(PostExample example);
 

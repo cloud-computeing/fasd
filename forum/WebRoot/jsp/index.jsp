@@ -281,7 +281,6 @@ function sub(currentPage){
 									<th scope="col">作者</th>
 									<th scope="col">点击</th>
 									<th scope="col">回复</th>
-									<th scope="col">类型</th>
 									<th scope="col">发帖时间</th>
 								</tr>
 							</tbody>

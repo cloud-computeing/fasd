@@ -142,7 +142,7 @@
       #{topflag,jdbcType=INTEGER}, #{plateid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Post" >
+  <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.PostCustom" >
     insert into post
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="postid != null" >
@@ -181,6 +181,9 @@
       <if test="content != null" >
         content,
       </if>
+      <if test="posttime != null" >
+        posttime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="postid != null" >
@@ -218,6 +221,9 @@
       </if>
       <if test="content != null" >
         #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="posttime != null" >
+        #{posttime,jdbcType=DATE},
       </if>
     </trim>
   </insert>

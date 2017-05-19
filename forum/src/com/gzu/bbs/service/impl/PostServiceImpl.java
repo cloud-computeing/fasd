@@ -85,5 +85,9 @@ public class PostServiceImpl implements PostService {
 		});
 		return all;
 	}
+	public int posting(PostCustom postCustom) throws Exception {
+		postMapper.insertSelective(postCustom);
+		return 1;
+	}
 
 }

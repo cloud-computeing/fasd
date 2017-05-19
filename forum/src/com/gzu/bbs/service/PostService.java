@@ -26,4 +26,6 @@ public interface PostService {
 	public int insertReply(ReplyCustom reply)throws Exception;
 	//查看某帖子评论
 	public List<ReplyCustom> queryReplyByPid(Integer pid)throws Exception;
+	//发帖
+	public int posting(PostCustom postCustom)throws Exception;
 }

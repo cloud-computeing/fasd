@@ -3,6 +3,7 @@ package com.gzu.bbs.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,9 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gzu.bbs.pojo.LikeVo;
+import com.gzu.bbs.pojo.PlateCustom;
 import com.gzu.bbs.pojo.Post;
+import com.gzu.bbs.pojo.PostCustom;
 import com.gzu.bbs.pojo.ReplyCustom;
 import com.gzu.bbs.pojo.ThumpupnumKey;
+import com.gzu.bbs.service.PlateService;
 import com.gzu.bbs.service.PostService;
 
 @Controller
@@ -22,7 +26,8 @@ import com.gzu.bbs.service.PostService;
 public class PostController {
 	@Autowired
 	private PostService postService;
-	
+	@Autowired
+	private PlateService plateService;
 	//帖子详情
 	@RequestMapping(value="/postDetails")
 	public String postDetails(Model model,Integer postid) throws Exception{
@@ -59,12 +64,25 @@ public class PostController {
 	//添加评论
 	@RequestMapping(value="/reply")
 	public String addComments(ReplyCustom replyCustom,HttpServletRequest request) throws Exception{
-		String replyerId=Global.getUserId(request);
+		/*String replyerId=Global.getUserId(request);
 		String replyerName=Global.getUserName(request);
 		replyCustom.setReplytime(new Date());
 		replyCustom.setReplyerid(replyerId);
 		replyCustom.setReplyername(replyerName);
-		postService.insertReply(replyCustom);
+		replyCustom.setFloor(5);
+		postService.insertReply(replyCustom);*/
 		return "forward:/post/postDetails.action";
+	}
+	//发帖
+	@RequestMapping(value="/addPost")
+	public String addPost(PostCustom postCustom,HttpServletRequest request) throws Exception{
+		String userid=Global.getUserId(request);
+		String username=Global.getUserName(request);
+		postCustom.setUserid(userid);
+		postCustom.setUsername(username);
+		postCustom.setPosttime(new Date());
+		postCustom.setTopflag(0);
+		postService.posting(postCustom);
+		return "redirect:/index.action";
 	}
 }

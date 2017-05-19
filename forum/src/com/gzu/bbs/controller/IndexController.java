@@ -56,7 +56,12 @@ public class IndexController {
 			postVo.setBegin((postVo.getCurrentPage()-1)*postVo.getSize());
 		}
 		postVo.setSum(postService.querySumPost(postVo));
-		postVo.setPagecount((int)(postVo.getSum()/postVo.getSize())+1);
+		//设置z总页数
+		int pt=(int)(postVo.getSum()/postVo.getSize());
+		if((postVo.getSum()%postVo.getSize())!=0){
+			pt +=1;
+		}
+		postVo.setPagecount(pt);
 		List<PostCustom> allPost=postService.queryPostPage(postVo);
 		//设置某板块的全部帖子总数,总页数，当前页
 		model.addAttribute("postVo", postVo);
