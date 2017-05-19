@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="jsp/css/index.css">
 <title>贵大论坛</title>
@@ -23,7 +24,7 @@ function sub(currentPage){
 		<div class="top_nav_wrap">
 			<div id="top_nav" class="clearfix">
 				<div class="top-nav-logo">
-					<img alt="" src="Picuter/logo.png">
+					<img alt="" src="jsp/css/Picuter/logo.png">
 				</div>
 				<div class="top-nav-main clearfix">
 					<div class="top-nav-menu clearfix">
@@ -105,30 +106,6 @@ function sub(currentPage){
 						</ul>
 					</div>
 					<div class="line"></div>
-					<!-- <div class="nav_child_box" style="display: block;">
-						<ul class="nav_child">
-							<li class="child_hd"><span class="child_name">后勤集团</span>
-							</li>
-							<li><a class="child_link" itemid="1092" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="no21" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="926" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="928" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="874" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="687" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="1155" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="1136" href="">宿舍服务</a>
-							</li>
-							<li><a class="child_link" itemid="820" href="">宿舍服务</a>
-							</li>
-						</ul>
-					</div> -->
 				</div>
 			</div>
 
@@ -168,14 +145,14 @@ function sub(currentPage){
 				<div class="headlines">
 					<div class="location clearfix">
 						<div class="text">
-							<strong>印象贵大</strong> <a id="block_join_btn" title="加入本版" href=""></a>
+							<strong>印象贵大</strong> <!-- <a id="block_join_btn" title="加入本版" href=""></a> -->
 						</div>
-						<div class="bbs-powers js-power">
+						<!-- <div class="bbs-powers js-power">
 							<a id="banzhu_apply_link" class="fred">申请学籍</a>
-						</div>
-						<div class="data-count">
+						</div> -->
+						<!-- <div class="data-count">
 							<span title="16220">主贴数：1万</span> <span title="16220">回帖数：20万</span>
-						</div>
+						</div> -->
 					</div>
 					<div class="headlines-tab">
 						<ul class="location-tabs">
@@ -297,7 +274,9 @@ function sub(currentPage){
 										</td>
 										<td>${post.clickamount}</td>
 										<td>${post.replyamount}</td>
-										<td title="2017-05-14 15:46" style="font-size: 12px;">${post.posttime}
+										
+										<td title="2017-05-14 15:46" style="font-size: 12px;">
+											<fmt:formatDate value="${post.posttime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>
 									</tr>
 								</c:forEach>

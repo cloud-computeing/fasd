@@ -177,7 +177,7 @@
         #{replyername,jdbcType=VARCHAR},
       </if>
       <if test="replytime != null" >
-        #{replytime,jdbcType=DATE},
+        #{replytime,jdbcType=TIMESTAMP},
       </if>
       <if test="replytoobjectid != null" >
         #{replytoobjectid,jdbcType=VARCHAR},

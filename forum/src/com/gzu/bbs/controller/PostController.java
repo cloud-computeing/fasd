@@ -3,8 +3,6 @@ package com.gzu.bbs.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +18,7 @@ import com.gzu.bbs.pojo.ReplyCustom;
 import com.gzu.bbs.pojo.ThumpupnumKey;
 import com.gzu.bbs.service.PlateService;
 import com.gzu.bbs.service.PostService;
+import com.gzu.bbs.util.Global;
 
 @Controller
 @RequestMapping(value="/post")
@@ -30,9 +29,11 @@ public class PostController {
 	private PlateService plateService;
 	//帖子详情
 	@RequestMapping(value="/postDetails")
-	public String postDetails(Model model,Integer postid) throws Exception{
+	public String postDetails(Model model,Integer postid,String flag) throws Exception{
 		List<ReplyCustom> all=new ArrayList<ReplyCustom>();
-		postService.clickamount(postid);//点击后点击量加一
+		if(flag==null){
+			postService.clickamount(postid);//点击后点击量加一
+		}
 		Post post=postService.queryPostById(postid);//查询帖子
 		all=postService.queryReplyByPid(postid);//查询帖子评论
 		if(post==null){
@@ -80,7 +81,8 @@ public class PostController {
 		String username=Global.getUserName(request);
 		postCustom.setUserid(userid);
 		postCustom.setUsername(username);
-		postCustom.setPosttime(new Date());
+		long l = System.currentTimeMillis();//生成当前系统时间
+		postCustom.setPosttime(new Date(l));
 		postCustom.setTopflag(0);
 		postService.posting(postCustom);
 		return "redirect:/index.action";

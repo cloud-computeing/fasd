@@ -208,7 +208,7 @@
         #{replyamount,jdbcType=INTEGER},
       </if>
       <if test="latestreplytime != null" >
-        #{latestreplytime,jdbcType=DATE},
+        #{latestreplytime,jdbcType=TIMESTAMP},
       </if>
       <if test="pictureid != null" >
         #{pictureid,jdbcType=VARCHAR},
@@ -223,7 +223,7 @@
         #{content,jdbcType=LONGVARCHAR},
       </if>
       <if test="posttime != null" >
-        #{posttime,jdbcType=DATE},
+        #{posttime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
