@@ -28,4 +28,6 @@ public interface PostService {
 	public List<ReplyCustom> queryReplyByPid(Integer pid)throws Exception;
 	//发帖
 	public int posting(PostCustom postCustom)throws Exception;
+	//查询一级评论的总条数
+	public int queryCount(Integer id,Integer a)throws Exception;
 }

@@ -6,7 +6,7 @@
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="jsp/css/index.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/jsp/css/index.css">
 <title>贵大论坛</title>
 <script type="text/javascript">
 function sub(currentPage){

@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     This is my JSP page.<br>
     <%
-    	session.setAttribute("userid","123"	);
-    	session.setAttribute("userName","二哈"	);
+    	session.setAttribute("userid","456"	);
+    	session.setAttribute("userName","金毛");
      %>
     <a href="${pageContext.request.contextPath }/jsp/test.jsp">测试</a>
     <a href="${pageContext.request.contextPath }/index.action">主页</a>

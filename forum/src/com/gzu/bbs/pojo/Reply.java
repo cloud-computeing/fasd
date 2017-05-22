@@ -20,8 +20,18 @@ public class Reply {
     private Integer floor;
     
     private String replytoobjectname;
+    
+    private Integer replyid;
 
-    public Integer getId() {
+    public Integer getReplyid() {
+		return replyid;
+	}
+
+	public void setReplyid(int replyid) {
+		this.replyid = replyid;
+	}
+
+	public Integer getId() {
         return id;
     }
 

@@ -463,4 +463,11 @@
   	<update id="updateClickamount" parameterType="int">
   		UPDATE post SET clickAmount=clickAmount+1 WHERE postId=#{id};
   	</update>
+  	
+  	<select id="queryCountPost1" parameterType="int" resultType="int">
+  		SELECT count(*) FROM reply WHERE postId=#{id} AND replyToObjectId IS NULL
+  	</select>
+  		<select id="queryCountPost2" parameterType="int" resultType="int">
+  		SELECT count(*) FROM reply WHERE postId=#{id} AND replyToObjectId IS NOT NULL
+  	</select>
 </mapper>

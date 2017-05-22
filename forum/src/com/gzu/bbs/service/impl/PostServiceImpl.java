@@ -89,5 +89,12 @@ public class PostServiceImpl implements PostService {
 		postMapper.insertSelective(postCustom);
 		return 1;
 	}
+	public int queryCount(Integer id,Integer a) throws Exception {
+		if(a==1){
+			return postMapper.queryCountPost1(id);
+		}else{
+			return postMapper.queryCountPost2(id);
+		}
+	}
 
 }

@@ -47,4 +47,8 @@ public interface PostMapper {
     int updateLike(Integer id);
     //点击数加一
     int updateClickamount(Integer id);
+    //查看一级评论的总条数
+    int queryCountPost1(Integer id);
+    //查看二级评论的总条数
+    int queryCountPost2(Integer id);
 }

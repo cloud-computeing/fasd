@@ -162,6 +162,9 @@
       <if test="replytoobjectname != null" >
         replytoobjectname,
       </if>
+      <if test="replyid != null" >
+        replyid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -190,6 +193,9 @@
       </if>
       <if test="replytoobjectname != null" >
         #{replytoobjectname,jdbcType=VARCHAR},
+      </if>
+      <if test="replyid != null" >
+        #{replyid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
