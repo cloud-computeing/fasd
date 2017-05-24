@@ -18,10 +18,10 @@
 		图片<br>
 		<c:if test="${pic !=null}">
 						<img src="/pic/${pic}" width=100 height=100 />
-						<br />
+						<br/>
 		</c:if> 
 		<img src="/pic/d4c8c64d-e157-4d26-be6d-772e7461963f.jpg" width=100 height=100 />
-		<input type="file" name="pictureFile" />
+		<input type="file" name="pictureFile"  />
 		<input type="submit" value="提交">
 </form>
 

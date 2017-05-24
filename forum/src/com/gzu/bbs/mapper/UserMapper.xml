@@ -293,5 +293,10 @@
   <select id="someUser" parameterType="java.lang.String" resultType="com.gzu.bbs.pojo.User">
   select * from user where username like '%${value}%'
   </select>
-  
+  <select id="mohu"  parameterType="UserVo" resultType="com.gzu.bbs.pojo.User">
+  SELECT * from user WHERE username like '%%' LIMIT #{start},#{size}
+  </select>
+  <select id="someCount" resultType="java.lang.Integer">
+  select COUNT(*) from user
+  </select>
 </mapper>

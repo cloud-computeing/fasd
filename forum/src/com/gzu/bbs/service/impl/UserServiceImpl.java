@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gzu.bbs.mapper.UserMapper;
 import com.gzu.bbs.pojo.User;
+import com.gzu.bbs.pojo.UserVo;
 import com.gzu.bbs.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,6 +37,16 @@ public class UserServiceImpl implements UserService {
 
 	public int updateUser(User user) throws Exception {
 		return userMapper.updateByPrimaryKey(user);
+	}
+
+	public List<User> mohu(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.mohu(userVo);
+	}
+
+	public int someCount() throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.someCount();
 	}
 
 	

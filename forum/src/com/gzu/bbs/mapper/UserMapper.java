@@ -2,6 +2,8 @@ package com.gzu.bbs.mapper;
 
 import com.gzu.bbs.pojo.User;
 import com.gzu.bbs.pojo.UserExample;
+import com.gzu.bbs.pojo.UserVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +38,6 @@ public interface UserMapper {
     
     List<User> allUser();
     List<User> someUser(String name);
+    List<User> mohu(UserVo userVo);
+    int someCount();
 }

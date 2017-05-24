@@ -22,6 +22,8 @@ public interface PostService {
 	public int like(LikeVo likeVo);
 	//用户点击帖子，点击数甲1
 	public int clickamount(Integer id) throws Exception;
+	//用户回复帖子，回复数甲1
+	public int UpdateReply(Integer id) throws Exception;
 	//添加评论
 	public int insertReply(ReplyCustom reply)throws Exception;
 	//查看某帖子评论
@@ -30,4 +32,6 @@ public interface PostService {
 	public int posting(PostCustom postCustom)throws Exception;
 	//查询一级评论的总条数
 	public int queryCount(Integer id,Integer a)throws Exception;
+	//查询被赞多的帖子
+	public List<PostCustom> queryPostCA(Integer a)throws Exception;
 }

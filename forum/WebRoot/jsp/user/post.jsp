@@ -25,11 +25,11 @@
 </head>
 
 <body>
-	<form action="${pageContext.request.contextPath }/post/addPost.action">
+	<form action="${pageContext.request.contextPath }/post/addPost.action" enctype="multipart/form-data" method="post">
 
 
 		<select name="plateid">
-			<option value="null">-请选择-</option>
+			<option value="null">-请选择类型-</option>
 			<c:forEach items="${allPlate }" var="plates">
 				<c:forEach items="${plates.value }" var="plate">
 					<option value="${plate.plateid }">${plate.platename }</option>
@@ -49,7 +49,8 @@
         <select id="selCity">  
             <option>-请选择-</option>
         </select> --%>
-		<textarea rows="10" cols="60" name="content"></textarea>
+		<textarea rows="10" cols="60" name="content"></textarea><br>
+		<input type="file" name="picture"/>
 		<br> <input type="submit" value="发帖">
 	</form>
 </body>

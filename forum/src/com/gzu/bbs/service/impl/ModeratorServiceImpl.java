@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gzu.bbs.mapper.ModeratorMapper;
 import com.gzu.bbs.pojo.Moderator;
+import com.gzu.bbs.pojo.ModeratorVo;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.Platetype;
 import com.gzu.bbs.service.ModeratorService;
@@ -19,7 +20,7 @@ private ModeratorMapper moderatorMapper;
 		return moderatorMapper.selectBy(name);
 	}
 //全部的版主信息显示 
-	public List<Moderator> allModerators() throws Exception {
+	public List<Moderator> queryAllModerator() throws Exception {
 		return moderatorMapper.SelectAllModerators();
 	}
 //版主的详细信息显示
@@ -41,6 +42,14 @@ private ModeratorMapper moderatorMapper;
 //查询版主管理的板块
 	public List<Plate> somePlates(Integer id) throws Exception {
 		return moderatorMapper.selectPlate(id);
+	}
+	public int someCount() throws Exception {
+		// TODO Auto-generated method stub
+		return moderatorMapper.someCount();
+	}
+	public List<Moderator> mohu(ModeratorVo moderatorVo) throws Exception {
+		// TODO Auto-generated method stub
+		return moderatorMapper.mohu(moderatorVo);
 	}
 
 }

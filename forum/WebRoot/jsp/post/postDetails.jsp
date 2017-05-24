@@ -81,24 +81,10 @@
 	<div>
 		<div id="doc">
 			<div class="hd"></div>
-			<div class="post-travel-nav clearfix">
-				<ul class="post-nav-list clearfix">
-					<li class="first"><a class="top-nav-main-menu" href="">最美中国首页</a>
-					</li>
-					<li><a class="top-nav-main-menu on" href="" appstr="focus"
-						ppstr="travel">旅游论坛</a></li>
-					<li><a class="top-nav-main-menu on" href="" appstr="focus"
-						ppstr="travel">目的地</a></li>
-					<li class="top-nav-menu-li"><a class="top-nav-main-menu"
-						href="">精选特供</a></li>
-					<li class="top-nav-menu-li"><a class="top-nav-main-menu"
-						href="">旅游导购</a></li>
-				</ul>
-			</div>
 			<div class="atl-location clearfix">
 				<p class="crumbs">
-					<a href="">贵大论坛</a> > <em> <a class="addpost" href=""
-						rel="nofollow">最美中国</a> </em> <a class="addpost" href="${pageContext.request.contextPath }/user/post.action" rel="nofollow">[我要发帖]</a>
+					<a href="${pageContext.request.contextPath }">贵大论坛</a> > <em> <a class="addpost" href=""
+						rel="nofollow">${plate.platename }</a> </em> <a class="addpost" href="${pageContext.request.contextPath }/user/post.action" rel="nofollow">[我要发帖]</a>
 				</p>
 			</div>
 			<div id="post_head" class="atl-head">
@@ -135,9 +121,9 @@
 						</div>
 						<div class="atl-con-bd clearfix">
 							<div class="bbs-content clearfix">
-								${post.content }
+								${post.content }<br>
 								<img alt="" src="/pic/${post.pictureid }"
-									 style="display: block; cursor: pointer;">
+									 style="display: blockw;width: 200px;height: 100px">
 							</div>
 							<div id="alt_action" class="clearfix"></div>
 							<div class="clearfix mt20 mb10">
@@ -169,43 +155,25 @@
 									</div>
 								</div>
 								<div class="bd">
+								
 									<ul class="receive-box cf" style="display:block;">
-										<li><span class="rank rank-1">1</span>
-											<div class="info">
-												<a href="" target="_blank"> <img class="info-pic"
-													src="http://tx.tianyaui.com/logo/small/103164163"> </a>
-												<p class="info-name">
-													<a href="" target="_blank">岑若曦</a>
-												</p>
-												<p class="info-shang">140人赞过</p>
-											</div>
-											<div class="summary">
-												<a href="" target="_blank">短线的最高境界是不停的追逐涨停</a>
-											</div></li>
-										<li><span class="rank rank-1">2</span>
-											<div class="info">
-												<a href="" target="_blank"> <img class="info-pic"
-													src="http://tx.tianyaui.com/logo/small/104589374"> </a>
-												<p class="info-name">
-													<a href="" target="_blank">CN西蒙海耶</a>
-												</p>
-												<p class="info-shang">131人赞过</p>
-											</div>
-											<div class="summary">
-												<a href="" target="_blank">CN西蒙海耶的股市成长记录</a>
-											</div></li>
-										<li><span class="rank rank-1">3</span>
-											<div class="info">
-												<a href="" target="_blank"> <img class="info-pic"
-													src="http://tx.tianyaui.com/logo/small/106976884"> </a>
-												<p class="info-name">
-													<a href="" target="_blank">丶萧易</a>
-												</p>
-												<p class="info-shang">120人赞过</p>
-											</div>
-											<div class="summary">
-												<a href="" target="_blank">扒一扒算命先生那些事</a>
-											</div></li>
+										<c:forEach items="${allUser }" var="ue" varStatus="status">
+											<c:forEach items="${ue }" var="u">
+											<li><span class="rank rank-1">${status.index+1 }</span>
+												<div class="info">
+													<a href="" target="_blank"> <img class="info-pic"
+														src="/pic/${u.key.userheadid }"> </a>
+													<p class="info-name">
+														<a href="" target="_blank">${u.key.username }</a>
+													</p>
+													<p class="info-shang">${u.value.goodamount }人赞过</p>
+												</div>
+												<div class="summary">
+													<a href="${pageContext.request.contextPath}/post/postDetails.action?postid=${u.value.postid }" target="_blank">${u.value.posttitle }</a>
+												</div></li>
+											</c:forEach>
+										</c:forEach>
+										
 									</ul>
 								</div>
 							</div>
@@ -286,8 +254,8 @@
 										来自： <a class="a-link" href="" target="_blank" rel="nofollow">贵大论坛客户端</a>
 										| <a class="reportme a-link" href="" author="击出日"
 											style="visibility:visible;">举报</a> | <span>楼层 :${reply.floor }</span> | <a
-											class="a-link-2 reply" href="#textAreaContainer" onclick="erji('${reply.replyername }','${reply.replyerid }','${reply.id }')">回复</a> | <a href=""
-											class="a-link-2 ir-remark" floor="2" _stat="" title="插入评论">评论</a>
+											class="a-link-2 reply" href="#textAreaContainer" onclick="erji('${reply.replyername }','${reply.replyerid }','${reply.id }')">回复</a><!--  | <a href=""
+											class="a-link-2 ir-remark" floor="2" _stat="" title="插入评论">评论</a> -->
 									</div>
 								</div>
 							</div>

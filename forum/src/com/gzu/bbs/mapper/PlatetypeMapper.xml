@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    plateTypeId, plateTypeName, moderatorId
+    plateTypeId, plateTypeName
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gzu.bbs.pojo.PlatetypeExample" >
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gzu.bbs.pojo.Platetype" >
-    insert into platetype (plateTypeId, plateTypeName, moderatorId
+    insert into platetype (plateTypeId, plateTypeName
       )
-    values (#{platetypeid,jdbcType=INTEGER}, #{platetypename,jdbcType=VARCHAR}, #{moderatorid,jdbcType=INTEGER}
+    values (#{platetypeid,jdbcType=INTEGER}, #{platetypename,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.Platetype" >
@@ -174,8 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.bbs.pojo.Platetype" >
     update platetype
-    set plateTypeName = #{platetypename,jdbcType=VARCHAR},
-      moderatorId = #{moderatorid,jdbcType=INTEGER}
+    set plateTypeName = #{platetypename,jdbcType=VARCHAR}
     where plateTypeId = #{platetypeid,jdbcType=INTEGER}
   </update>
   
@@ -183,5 +182,11 @@
   
   <select id="selectAllType" resultType="platetypeCustom">
   	SELECT * FROM platetype
+  </select>
+  <select id="mohu"  parameterType="PlatetypeVo" resultType="com.gzu.bbs.pojo.Platetype">
+  SELECT * from platetype WHERE plateTypeName like '%%' LIMIT #{start},#{size}
+  </select>
+  <select id="someCount" resultType="java.lang.Integer">
+  select COUNT(*) from platetype
   </select>
 </mapper>

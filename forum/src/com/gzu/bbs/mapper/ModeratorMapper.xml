@@ -226,5 +226,12 @@
   <select id="somePlate" parameterType="java.lang.Integer" resultType="com.gzu.bbs.pojo.Plate">
   	SELECT * from plate WHERE platetypeid = ${value}
   </select>
-  
+  <!-- 查询总条数 -->
+  <select id="someCount" resultType="java.lang.Integer">
+  select COUNT(*) from moderator
+  </select>
+  <!-- 版主的模糊查询 -->
+  <select id="mohu"  parameterType="ModeratorVo" resultType="com.gzu.bbs.pojo.Moderator">
+  SELECT * from moderator WHERE moderatorName like '%%' LIMIT #{start},#{size}
+  </select>
 </mapper>

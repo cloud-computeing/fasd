@@ -10,6 +10,7 @@ import com.gzu.bbs.mapper.PlatetypeMapper;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.Platetype;
 import com.gzu.bbs.pojo.PlatetypeCustom;
+import com.gzu.bbs.pojo.PlatetypeVo;
 import com.gzu.bbs.service.PlatetypeService;
 @Service
 public class PlatetypeServiceImpl implements PlatetypeService {
@@ -41,6 +42,14 @@ private ModeratorMapper moderatorMapper;
 	//板块类型对应的板块
 	public List<Plate> somePlate(Integer id) throws Exception {
 		return moderatorMapper.somePlate(id);
+	}
+	public List<Platetype> mohu(PlatetypeVo platetypeVo) throws Exception {
+		// TODO Auto-generated method stub
+		return platetypeMapper.mohu(platetypeVo);
+	}
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return platetypeMapper.someCount();
 	}
 	
 

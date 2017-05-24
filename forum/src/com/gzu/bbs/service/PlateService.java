@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.PlateCustom;
+import com.gzu.bbs.pojo.PlateVo;
 @Service
 public interface PlateService {
 	public Map<String,List<PlateCustom>>queryAllPlateByType()throws Exception;
@@ -28,4 +29,6 @@ public interface PlateService {
 	public int deletPlate(Integer id)throws Exception;
 	//修改板块
 	public int updatePlate(Plate plate)throws Exception;
+	public List<Plate> mohu(PlateVo plateVo)throws Exception;
+	public int count()throws Exception;
 }

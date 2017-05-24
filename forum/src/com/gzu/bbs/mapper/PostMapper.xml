@@ -463,11 +463,18 @@
   	<update id="updateClickamount" parameterType="int">
   		UPDATE post SET clickAmount=clickAmount+1 WHERE postId=#{id};
   	</update>
+  	<!--回复数加一  -->
+  	<update id="updateReply" parameterType="int">
+  		UPDATE post SET replyamount=replyamount+1 WHERE postId=#{id};
+  	</update>
   	
   	<select id="queryCountPost1" parameterType="int" resultType="int">
   		SELECT count(*) FROM reply WHERE postId=#{id} AND replyToObjectId IS NULL
   	</select>
   		<select id="queryCountPost2" parameterType="int" resultType="int">
   		SELECT count(*) FROM reply WHERE postId=#{id} AND replyToObjectId IS NOT NULL
+  	</select>
+  	<select id="selectPostGA" parameterType="int" resultType="postCustom">
+  		SELECT * FROM post ORDER BY goodamount DESC LIMIT 0,#{id};
   	</select>
 </mapper>

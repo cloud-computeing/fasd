@@ -3,6 +3,8 @@ package com.gzu.bbs.mapper;
 import com.gzu.bbs.pojo.Platetype;
 import com.gzu.bbs.pojo.PlatetypeCustom;
 import com.gzu.bbs.pojo.PlatetypeExample;
+import com.gzu.bbs.pojo.PlatetypeVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -31,4 +33,6 @@ public interface PlatetypeMapper {
     List<PlatetypeCustom> selectAllType();
 
     int updateByPrimaryKey(Platetype record);
+    List<Platetype> mohu(PlatetypeVo platetypeVo)throws Exception;
+    int someCount()throws Exception;
 }

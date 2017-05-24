@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.Platetype;
 import com.gzu.bbs.pojo.PlatetypeCustom;
+import com.gzu.bbs.pojo.PlatetypeVo;
 @Service
 public interface PlatetypeService {
 	//所有的板块查询
@@ -27,4 +28,7 @@ public interface PlatetypeService {
 		public Platetype onePlateType(Integer id)throws Exception;
 	//板块类型对应的板块
 		public List<Plate> somePlate(Integer id)throws Exception;
+		
+		public List<Platetype> mohu(PlatetypeVo platetypeVo)throws Exception;
+		public int count()throws Exception;
 }

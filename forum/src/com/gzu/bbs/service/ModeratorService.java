@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.gzu.bbs.pojo.Moderator;
+import com.gzu.bbs.pojo.ModeratorVo;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.Platetype;
 
@@ -19,7 +20,7 @@ public interface ModeratorService {
 	//版主的模糊查询
 	public List<Moderator> someModerators(String name)throws Exception;
 	//版主的查询（全部的版主查询）
-	public List<Moderator> allModerators()throws Exception;
+	public List<Moderator> queryAllModerator()throws Exception;
 	//版主的详细信息
 	public Moderator selectModerator(Integer id)throws Exception;
 	//版主的添加
@@ -30,4 +31,8 @@ public interface ModeratorService {
 	public int updateModerator(Moderator moderator)throws Exception;
 	//查询版主管理的板块
 	public List<Plate> somePlates(Integer id)throws Exception;
+	//查询版主总条数
+			public int someCount()throws Exception; 
+			//分页用到的模糊查询
+			public List<Moderator> mohu(ModeratorVo moderatorVo)throws Exception;
 }

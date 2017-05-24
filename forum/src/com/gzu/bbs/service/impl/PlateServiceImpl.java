@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gzu.bbs.mapper.PlateMapper;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.PlateCustom;
+import com.gzu.bbs.pojo.PlateVo;
 import com.gzu.bbs.pojo.PlatetypeCustom;
 import com.gzu.bbs.service.PlateService;
 import com.gzu.bbs.service.PlatetypeService;
@@ -55,6 +56,16 @@ public class PlateServiceImpl implements PlateService {
 
 	public int updatePlate(Plate plate) throws Exception {
 		return plateMapper.updateByPrimaryKey(plate);
+	}
+
+	public List<Plate> mohu(PlateVo plateVo) throws Exception {
+		// TODO Auto-generated method stub
+		return plateMapper.mohu(plateVo);
+	}
+
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return plateMapper.someCount();
 	}
 	
 	

@@ -8,8 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div style="position:absolute;top:30%;left:30%;width:700px;height:420px;">
+<div style="position:absolute;top:1%;left:30%;width:400px;height:420px;">
+<h1>版主类型下的板块</h1>
+</div>
+<div style="position:absolute;top:30%;left:15%;width:500px;height:420px;">
 <table>
+<tr>
+<td>板块id</td>
+<td>板块名字</td>
+<td>版主id</td>
+<td>板块类型id</td>
+</tr>
 <c:forEach var="somePlates" items="${somePlates }">
 <tr>
 <td>${somePlates.plateid}</td>
@@ -19,6 +29,7 @@
 </tr>
 </c:forEach>
 </table>
-...
+</div>
+</div>
 </body>
 </html>

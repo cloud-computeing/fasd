@@ -2,6 +2,7 @@ package com.gzu.bbs.mapper;
 
 import com.gzu.bbs.pojo.Moderator;
 import com.gzu.bbs.pojo.ModeratorExample;
+import com.gzu.bbs.pojo.ModeratorVo;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.Platetype;
 
@@ -35,4 +36,8 @@ public interface ModeratorMapper {
     List<Moderator> selectBy(String name);
     List<Plate> selectPlate(Integer id);
     List<Plate> somePlate(Integer id);
+  //查询总条数
+    int someCount()throws Exception;
+    //模糊查询
+    List<Moderator> mohu(ModeratorVo moderatorVo)throws Exception;
 }

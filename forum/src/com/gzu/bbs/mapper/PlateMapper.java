@@ -3,6 +3,8 @@ package com.gzu.bbs.mapper;
 import com.gzu.bbs.pojo.Plate;
 import com.gzu.bbs.pojo.PlateCustom;
 import com.gzu.bbs.pojo.PlateExample;
+import com.gzu.bbs.pojo.PlateVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,4 +37,7 @@ public interface PlateMapper {
     List<Plate> SelectAllplates();
     //模糊查询
     List<Plate> SelectSomeplates(String id);
+    
+    List<Plate> mohu(PlateVo plateVo)throws Exception;
+    int someCount()throws Exception;
 }

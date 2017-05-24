@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,11 +9,93 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/jsp/css/index.css">
 <title>贵大论坛</title>
 <script type="text/javascript">
+var tt=null;
+var kkk;
+var n=0;
+var timer=0;
+window.onload=function(){
+	var li=document.getElementById("btn").getElementsByTagName("li");
+	kkk=document.getElementById("imm").getElementsByTagName("a");
+	for(var i=0;i<kkk.length;i++){
+		if(i!=0){
+			kkk[i].style.opacity=0;
+		}
+	}
+	for(var j=0;j<li.length;j++){
+			li[j].onmouseover=function(){
+				var that=this;
+				tt=setTimeout(function(){ var index=that.innerHTML-1;
+					n=index;
+					if(index <kkk.length){
+						for(var o=0;o<li.length;o++){
+							li[o].className="";
+							kkk[o].style.opacity=0;
+							kkk[o].style.zIndex=9998;
+						}
+						that.className="on";
+						kkk[index].style.opacity=1;
+						kkk[index].style.zIndex=9999;
+						kkk[index].style.transition="opacity 0.8s";
+					  /* leftf(-300,0,kkk[index]);*/
+					}
+				},100);
+
+			};
+			li[j].onmouseout=function(){
+				clearTimeout(tt);
+			}
+			var left=document.getElementById("left1");
+			var right=document.getElementById("right1");
+			var jiao=document.getElementById("jiao");
+			var body=document.getElementById("cont");
+
+			timer = setInterval("autoplay()",2000);
+			body.onmouseover=function(){
+				jiao.style.display="block";
+				clearInterval(timer);
+			};
+			body.onmouseout=function(){
+				jiao.style.display="none";
+				timer = setInterval("autoplay()",2000);
+			};
+			left.onclick=function(){
+				if(n>0){
+					n--;
+				}else if(n==0){
+					n=kkk.length-1;
+				}
+				var li=document.getElementById("btn").getElementsByTagName("li");
+				li[n].onmouseover();
+			};
+			right.onclick=function(){
+				n=n>=(kkk.length-1)?0:++n;
+				var li=document.getElementById("btn").getElementsByTagName("li");
+				li[n].onmouseover();
+			}
+		}
+
+		
+		function leftf(start,end,ele){ var tt=setInterval(function (){
+			start+=10;
+			ele.style.left=start+"px";
+			if(start==end){
+				clearInterval(tt);
+			}
+					},20);
+		}
+
+		function autoplay(){
+			n=n>=(kkk.length-1)?0:++n;
+			var li=document.getElementById("btn").getElementsByTagName("li");
+			li[n].onmouseover();
+		};
+
 function sub(currentPage){
 	document.getElementById("currentpage").value=currentPage;
 	//alert(document.getElementById("currentpage").value);
 	bbs_type_search.submit();
 }
+
 
 </script>
 </head>
@@ -136,8 +218,8 @@ function sub(currentPage){
 						data-ads-order="01" data-ads-url-type="01">
 						<div class="adsame-box" style="position: relative; *zoom: 1;">
 							<div style="border: none;">
-								<iframe style="vertical-align: middle;" scrolling="no" src=""
-									width=670px height=90px;></iframe>
+							<!--主页图片                                   **************  -->
+								<img alt="" src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
 							</div>
 						</div>
 					</div>
@@ -147,12 +229,7 @@ function sub(currentPage){
 						<div class="text">
 							<strong>印象贵大</strong> <!-- <a id="block_join_btn" title="加入本版" href=""></a> -->
 						</div>
-						<!-- <div class="bbs-powers js-power">
-							<a id="banzhu_apply_link" class="fred">申请学籍</a>
-						</div> -->
-						<!-- <div class="data-count">
-							<span title="16220">主贴数：1万</span> <span title="16220">回帖数：20万</span>
-						</div> -->
+						<!--***************************  -->
 					</div>
 					<div class="headlines-tab">
 						<ul class="location-tabs">
@@ -160,29 +237,31 @@ function sub(currentPage){
 							<li>本版介绍</li>
 						</ul>
 						<div class="wrap-1 mt5 clearfix">
-							<div class="wrap-bd clearfix">
-								<div id="main_touban" class="touban-hot wrap-bd-in clearfix">
-									<div class="touban-pic"></div>
-									<div class="touban-guide clearfix"></div>
-								</div>
-							<!-- 	<div id="q_text_6_14">
-									<div class="main_xiangguan2">
-										<ul style="overflow: hidden;">
-											<li class="list-item cf"><span class="name">广告</span>
-												<div class="item_box">
-													<a class="item ads-loc-holder" href="#" data-ads-order="31"
-														target="_blank" style="color: red;">
-														<div class="adsame-box" style="position: relative;*zoom: 1;">111111111
-															<div style="border: none;">
-																<iframe style="vertical-align: middle;" scrolling="no"
-																	src="" width="560px" height="30px" frameborder="0"></iframe>
-															</div>
-														</div> </a>
-												</div></li>
-										</ul>
-									</div>广告
-								</div> -->
-							</div>
+                        <div class="waer_top">
+                           <div class="lii">
+		                   <div class="btn" id="btn">
+		                    <ul>
+		                     <li class="on">1</li>
+				             <li>2</li>
+				             <li>3</li>
+				             <li>4</li>
+		                    </ul>
+                        </div>
+                        </div>
+            <div class="imm" id="imm">
+			<a href=""> <img
+				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
+			</a> <a href=""> <img
+				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
+			</a> <a href=""> <img
+				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
+			</a> <a href=""><img
+				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
+			</a>
+		   </div>
+		   	<div id="jiao" >
+			<a href="#" id="left1">&lt;</a> <a href="#" id="right1">&gt;</a>
+		    </div>
 						</div>
 					</div>
 				</div>
@@ -330,3 +409,4 @@ function sub(currentPage){
 
 </body>
 </html>
+ 

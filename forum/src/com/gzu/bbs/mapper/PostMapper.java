@@ -45,10 +45,14 @@ public interface PostMapper {
     PostCustom selectPostById(Integer id);
     //点赞
     int updateLike(Integer id);
+    //回复数加一
+    int updateReply(Integer id);
     //点击数加一
     int updateClickamount(Integer id);
     //查看一级评论的总条数
     int queryCountPost1(Integer id);
     //查看二级评论的总条数
     int queryCountPost2(Integer id);
+    //查询帖子被赞最多的前几位
+    List<PostCustom>selectPostGA(Integer size);
 }

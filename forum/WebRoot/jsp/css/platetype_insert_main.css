@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+.main{
+	width:80%;
+	height:70%;
+	position:absolute;
+	top:20%;
+	left:20%;
+	/* background:yellow;   */
+	 float:left; 
+}
+
+#header{
+	width:98%;
+	height:20%;
+	position:absolute;
+	top:2%;
+	left:2%;
+	text-align:center;
+	/* background:green; */  
+}
+
+#return{
+	width:90%;
+	height:10%;
+	position:absolute;
+	top:22%;
+	left:10%;
+	/* background:blue;  */
+	text-buttom:0; 
+}
+/* #uploadimg{
+	width:30%;
+	height:40%;
+	position:absolute;
+	top:30%;
+	left:5%;
+	background:green;
+	text-align:center;
+	margin:5% 23%
+	
+} */
+#content{
+	width:50%;
+	height:60%;
+	position:absolute;
+	top:25%;
+	left:2%;
+	/* background:red; */
+	margin:5% 23%
+	
+}
+table{
+	border-spacing:0px 10px;
+}
+
+/* td{
+	
+	border:1px solid yellow;
+} */
+#moderator_button{
+	
+	height:30%;
+	text-align:center;
+}

@@ -206,4 +206,10 @@
   <select id="SelectSomeplates" parameterType="java.lang.String" resultType="com.gzu.bbs.pojo.Plate" >
     select * from plate where plateName like '%${value}%'
   </select>
+  <select id="mohu"  parameterType="PlateVo" resultType="com.gzu.bbs.pojo.Plate">
+  SELECT * from plate WHERE plateName like '%%' LIMIT #{start},#{size}
+  </select>
+  <select id="someCount" resultType="java.lang.Integer">
+  select COUNT(*) from plate
+  </select>
 </mapper>

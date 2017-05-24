@@ -96,5 +96,13 @@ public class PostServiceImpl implements PostService {
 			return postMapper.queryCountPost2(id);
 		}
 	}
+	public List<PostCustom> queryPostCA(Integer a) throws Exception {
+		List<PostCustom> allPost= postMapper.selectPostGA(a);
+		return allPost;
+	}
+	public int UpdateReply(Integer id) throws Exception {
+		postMapper.updateReply(id);
+		return 1;
+	}
 
 }

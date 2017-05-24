@@ -1,10 +1,19 @@
 package com.gzu.bbs.pojo;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+import org.springframework.validation.annotation.Validated;
+
+@Validated
 public class Moderator {
+	@Min(value=1,message="{Moderator.moderatorid.length.error}")
     private Integer moderatorid;
-
+	
+	@Size(min=1,max=16,message="{Moderator.moderatorname.length.error}")
     private String moderatorname;
-
+	
+	@Size(min=1,max=16,message="{Moderator.moderatorpassword.length.error}")
     private String moderatorpassword;
 
     private String moderatorsex;

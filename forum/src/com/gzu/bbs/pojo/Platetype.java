@@ -1,11 +1,18 @@
 package com.gzu.bbs.pojo;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
+
+@Validated
 public class Platetype {
+	@Min(value=1)
     private Integer platetypeid;
-
+	
+	@NotNull
     private String platetypename;
-
-    private Integer moderatorid;
 
     public Integer getPlatetypeid() {
         return platetypeid;
@@ -23,11 +30,5 @@ public class Platetype {
         this.platetypename = platetypename == null ? null : platetypename.trim();
     }
 
-    public Integer getModeratorid() {
-        return moderatorid;
-    }
 
-    public void setModeratorid(Integer moderatorid) {
-        this.moderatorid = moderatorid;
-    }
 }

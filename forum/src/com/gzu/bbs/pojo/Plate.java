@@ -1,12 +1,22 @@
 package com.gzu.bbs.pojo;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.validation.annotation.Validated;
+@Validated
 public class Plate {
+	@Min(value=1,message="{Plate.plateid.length.error}")
     private Integer plateid;
 
+	@Size(min=1,max=16,message="{Plate.platename.length.error}")
     private String platename;
 
+	@Min(value = 1,message="{Plate.moderatorid.null.error}")
     private Integer moderatorid;
 
+	@Min(value =1,message="{Plate.platetypeid.null.error}")
     private Integer platetypeid;
 
     public Integer getPlateid() {
