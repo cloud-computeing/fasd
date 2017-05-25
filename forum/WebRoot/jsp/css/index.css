@@ -355,11 +355,12 @@
   width:660px;
   height:177px;
  }
-#cont{
+.cont{
 	position:relative;
 	width:670px;
 	height:182px;
 	margin:1px 0px;
+	background:red;
 }
 .btn ul{
 	position: absolute;

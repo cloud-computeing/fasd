@@ -206,7 +206,7 @@ function autoplay(){
 			</a>
 		</div>
 		<div id="jiao" >
-			<a href="#" id="left">&lt;</a> <a href="#" id="right">&gt;</a>
+			<a href="#" id="left" style="">&lt;</a> <a href="#" id="right">&gt;</a>
 		</div>
 	</div>
 

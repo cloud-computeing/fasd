@@ -41,58 +41,61 @@ window.onload=function(){
 				},100);
 
 			};
-			li[j].onmouseout=function(){
-				clearTimeout(tt);
-			}
-			var left=document.getElementById("left1");
-			var right=document.getElementById("right1");
-			var jiao=document.getElementById("jiao");
-			var body=document.getElementById("cont");
-
-			timer = setInterval("autoplay()",2000);
-			body.onmouseover=function(){
-				jiao.style.display="block";
-				clearInterval(timer);
-			};
-			body.onmouseout=function(){
-				jiao.style.display="none";
-				timer = setInterval("autoplay()",2000);
-			};
-			left.onclick=function(){
-				if(n>0){
-					n--;
-				}else if(n==0){
-					n=kkk.length-1;
-				}
-				var li=document.getElementById("btn").getElementsByTagName("li");
-				li[n].onmouseover();
-			};
-			right.onclick=function(){
-				n=n>=(kkk.length-1)?0:++n;
-				var li=document.getElementById("btn").getElementsByTagName("li");
-				li[n].onmouseover();
-			}
+		li[j].onmouseout=function(){
+			clearTimeout(tt);
+		}
 		}
 
-		
-		function leftf(start,end,ele){ var tt=setInterval(function (){
-			start+=10;
-			ele.style.left=start+"px";
-			if(start==end){
-				clearInterval(tt);
-			}
-					},20);
+
+
+	var left=document.getElementById("left1");
+	var right=document.getElementById("right1");
+	var jiao=document.getElementById("jiao");
+	var body=document.getElementById("cont");
+
+	timer = setInterval("autoplay()",2000);
+	body.onmouseover=function(){
+		jiao.style.display="block";
+		clearInterval(timer);
+	};
+	body.onmouseout=function(){
+		jiao.style.display="none";
+		timer = setInterval("autoplay()",2000);
+	};
+	left.onclick=function(){
+		if(n>0){
+			n--
+		}else if(n==0){
+			n=kkk.length-1;
 		}
+		var li=document.getElementById("btn").getElementsByTagName("li");
+		li[n].onmouseover()
+	};
+	right.onclick=function(){
+		n=n>=(kkk.length-1)?0:++n;
+		var li=document.getElementById("btn").getElementsByTagName("li");
+		li[n].onmouseover();
+	}
 
-		function autoplay(){
-			n=n>=(kkk.length-1)?0:++n;
-			var li=document.getElementById("btn").getElementsByTagName("li");
-			li[n].onmouseover();
-		};
+ 
 
+function leftf(start,end,ele){ var tt=setInterval(function (){
+	start+=10;
+	ele.style.left=start+"px";
+	if(start==end){
+		clearInterval(tt);
+	}
+			},20)
+}
+
+function autoplay(){
+	n=n>=(kkk.length-1)?0:++n;
+	var li=document.getElementById("btn").getElementsByTagName("li");
+	li[n].onmouseover()
+};
 function sub(currentPage){
 	document.getElementById("currentpage").value=currentPage;
-	//alert(document.getElementById("currentpage").value);
+	alert(document.getElementById("currentpage").value);
 	bbs_type_search.submit();
 }
 
@@ -237,32 +240,34 @@ function sub(currentPage){
 							<li>本版介绍</li>
 						</ul>
 						<div class="wrap-1 mt5 clearfix">
-                        <div class="waer_top">
-                           <div class="lii">
+                      			<div class="wrap-1 mt5 clearfix">
+                        <div id="cont" style="position:relative;width:670px;height:180px;margin:1px 0;background:red;">
+                            <div class="lii">
 		                   <div class="btn" id="btn">
-		                    <ul>
-		                     <li class="on">1</li>
-				             <li>2</li>
-				             <li>3</li>
-				             <li>4</li>
+		                    <ul style="position:absolute;z-index:1000;bottom:15px;right:15px;">
+		                     <li class="on" style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">1</li>
+				             <li style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">2</li>
+				             <li style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">3</li>
+				             <li  style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height:20px;">4</li>
 		                    </ul>
                         </div>
                         </div>
             <div class="imm" id="imm">
-			<a href=""> <img
+			<a href=""> <img style="position:absolute;width:670px;height:180px;"
 				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
-			</a> <a href=""> <img
+			</a> <a href=""> <img style="position:absolute;width:670px;height:180px;"
+				src="${pageContext.request.contextPath }/jsp/css/Picuter/">
+			</a> <a href=""> <img style="position:absolute;width:670px;height:180px;"
 				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
-			</a> <a href=""> <img
-				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
-			</a> <a href=""><img
+			</a> <a href=""><img style="position:absolute;width:670px;height:180px;"
 				src="${pageContext.request.contextPath }/jsp/css/Picuter/logo.png">
 			</a>
 		   </div>
 		   	<div id="jiao" >
-			<a href="#" id="left1">&lt;</a> <a href="#" id="right1">&gt;</a>
+			<a href="#" id="left1" style="width:35px;height:50px;background-color:red;opacity:0.6;z-index:9999;display:block;position:absolute;top:60px;left:20px;color:white; font-size:20px;line-height:50px;text-align:center;text-decoration:none;">&lt;</a> <a href="#" id="right1" style="width:35px;height:50px;background-color:red;opacity:0.6;z-index:9999;display:block;position:absolute;top:60px;right:20px;color:white; font-size:20px;line-height:50px;text-align:center;text-decoration:none;">&gt;</a>
 		    </div>
-						</div>
+						</div>-->
+					</div>
 					</div>
 				</div>
 				<div id="main_xiangguan" class="main_xiangguan clearfix">
