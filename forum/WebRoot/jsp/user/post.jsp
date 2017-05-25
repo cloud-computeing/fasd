@@ -48,7 +48,7 @@
 								<li class="top-nav-menu-li top-nav-menu-li-first"><a
 									class="top-nav-user-menu with-logo" id="top-nav-user-menu"
 									href=""> <img class="logo" alt=""
-										src="pic/${user.userheadid }">
+										src="/pic/${user.userheadid }">
 										${user.username } <i class="top-ico-main-arrow"></i> </a></li>
 								<li class="top-nav-menu-li"><a
 									class="top-nav-user-menuft nav-msg" href="" _tystat="新版底导航/城市">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -72,7 +72,7 @@
 				<div class="clearfix header-profile self-profile">
 					<div class="img-left">
 						<a class="user-pic" href=""> <img
-							alt="" src="pic/${user.userheadid }"
+							alt="" src="/pic/${user.userheadid }"
 							width="130" height="130px"> </a>
 					</div>
 					<div class="text-right">
@@ -135,23 +135,23 @@
 										<!-- 文本详情 -->
 										<div class="content">
 											<textarea id="suiji_text" class="text-area"
-												placeholder="只能输入140个字" name="content"
+												placeholder="帖子内容" name="content"
 												style="width:534px;padding:0px 15px;overflow-y:scroll;height:140px;border:0;"
 												bindcursor="true" rows="" cols=""></textarea>
 										</div>
 										<div class="pics"></div>
 										<div class="tags-wrap">
-											<div class="tags-list">
-												<input id="tag-ipt" init-value="输入话题，空格确认" bindcursor="true"
-													type="text">
-											</div>
+												<textarea class="text-area"
+												placeholder="隐藏内容" name="hidecontent"
+												style="width:534px;padding:0px 15px;overflow-y:scroll;height:80px;border:0;"
+												bindcursor="true" rows="" cols=""></textarea>
 										</div>
 									</div>
 									<input type="file" name="picture"/>
-									<!-- <div class="ft">
-										<input class="cancle" value="取消" type="button"> <input
+									<div class="ft">
+										<!-- <input class="cancle" value="取消" type="button">  --><input
 											class="submit" value="发 布" type="submit">
-									</div> -->
+									</div>
 								</div>
 							</div>
 						</div>

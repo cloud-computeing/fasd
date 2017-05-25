@@ -371,6 +371,11 @@ public class AdminController {
 			model.addAttribute("allErrors", allErrors);
 			return "admin/user/User_Insert";
 		}
+		User user2 = new User();
+		user2 = userService.selectUser(user.getUserid());
+		if(user2!=null){
+			return "admin/user/User_Insert";
+		}//判断用户id重复
 		String newFile;
 		newFile = Global.upload(pictureFile);
 		user.setUserheadid(newFile);

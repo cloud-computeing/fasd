@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 			<td>用户邮箱&nbsp;&nbsp;：</td>
 			<td><input type="text" name="usermail" /></td></tr>
-			<tr><td>版主密码&nbsp;&nbsp;：</td>
+			<tr><td>用户密码&nbsp;&nbsp;：</td>
 			<td><input type="text" name="userpassword" /></td></tr>
 			<tr>
 			<td>用户签名&nbsp;&nbsp;：</td>

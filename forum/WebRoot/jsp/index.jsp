@@ -107,7 +107,12 @@ function leftf(start,end,ele){
 function autoplay(){
 	n=n>=(kkk.length-1)?0:++n;
 	var li=document.getElementById("btn").getElementsByTagName("li");
-	li[n-1].style.background="#cccccc";
+	if(n==0){
+		li[kkk.length-1].style.background="#cccccc";
+	}else{
+		li[n-1].style.background="#cccccc";
+	}
+	
 	li[n].onmouseover();
 };
 
@@ -256,7 +261,7 @@ function autoplay(){
 											<ul
 												style="position:absolute;z-index:1000;bottom:15px;right:15px;">
 												<li class="on"
-													style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">1</li>
+													style="position:relative;width:20px;height:20px;background-color:aquamarine;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">1</li>
 												<li
 													style="position:relative;width:20px;height:20px;background-color:#cccccc;border-radius:50%;float:left;list-style:none;margin: 0 5px;text-align: center;color: white;cursor:pointer;line-height: 20px;">2</li>
 												<li
@@ -310,7 +315,7 @@ function autoplay(){
 									<div id="bbs_btn_list" class="btn-list">
 										<a href=""><span class="arrow">提问</span> </a>
 									</div></li>
-								<li class="float-li"><a class="btn-gray" href="">刷新</a>
+								<li class="float-li"><a class="btn-gray" href="${pageContext.request.contextPath }/index.action">刷新</a>
 								</li>
 								<li class="top-search clearfix">
 									<form id="bbs_type_search"

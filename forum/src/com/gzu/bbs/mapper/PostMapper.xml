@@ -184,6 +184,9 @@
       <if test="posttime != null" >
         posttime,
       </if>
+      <if test="hidecontent != null" >
+        hideContent,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="postid != null" >
@@ -224,6 +227,9 @@
       </if>
       <if test="posttime != null" >
         #{posttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hidecontent != null" >
+        #{hidecontent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>

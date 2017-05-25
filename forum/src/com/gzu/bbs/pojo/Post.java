@@ -29,7 +29,17 @@ public class Post {
     
     private Date posttime;
 
-    public Date getPosttime() {
+    private String hidecontent;
+    
+    public String getHidecontent() {
+		return hidecontent;
+	}
+
+	public void setHidecontent(String hidecontent) {
+		this.hidecontent = hidecontent;
+	}
+
+	public Date getPosttime() {
 		return posttime;
 	}
 

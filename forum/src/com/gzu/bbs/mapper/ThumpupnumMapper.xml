@@ -93,7 +93,7 @@
   </delete>
   <insert id="insert" parameterType="com.gzu.bbs.pojo.ThumpupnumKey" >
     insert into thumpupnum (userId, postId)
-    values (#{userid,jdbcType=INTEGER}, #{postid,jdbcType=INTEGER})
+    values (#{userid,jdbcType=VARCHAR}, #{postid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.bbs.pojo.ThumpupnumKey" >
     insert into thumpupnum
@@ -107,7 +107,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="postid != null" >
         #{postid,jdbcType=INTEGER},

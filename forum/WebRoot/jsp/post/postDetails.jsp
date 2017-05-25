@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/jsp/css/postDetails.css">
 <!-- <link rel="stylesheet" type="text/css" href="postDetails.css"> -->
-<title>帖子主页</title>
+<title>帖子详情</title>
 <script type="text/javascript">
 	function erji(name,id,rid){
 	
@@ -83,7 +83,7 @@
 			<div class="hd"></div>
 			<div class="atl-location clearfix">
 				<p class="crumbs">
-					<a href="${pageContext.request.contextPath }">贵大论坛</a> > <em> <a class="addpost" href=""
+					<a href="${pageContext.request.contextPath }/index.action">贵大论坛</a> > <em> <a class="addpost" href=""
 						rel="nofollow">${plate.platename }</a> </em> <a class="addpost" href="${pageContext.request.contextPath }/user/post.action" rel="nofollow">[我要发帖]</a>
 				</p>
 			</div>
@@ -122,15 +122,24 @@
 						<div class="atl-con-bd clearfix">
 							<div class="bbs-content clearfix">
 								${post.content }<br>
+								
 								<img alt="" src="/pic/${post.pictureid }"
 									 style="display: blockw;width: 200px;height: 100px">
+									 <c:choose >
+										 <c:when test="${hidecontent != null }">
+										 	<c:if test="${post.hidecontent !=null }">
+										 		<p style="color: red;">隐藏内容:${post.hidecontent }</p>
+										 	</c:if>
+										 </c:when>
+										 <c:otherwise>
+										 	<c:if test="${post.hidecontent !=null }">
+										 		<p style="color: green;">回复看隐藏内容</p>
+										 	</c:if>
+										 </c:otherwise>
+									   </c:choose>
 							</div>
 							<div id="alt_action" class="clearfix"></div>
 							<div class="clearfix mt20 mb10">
-								<div class="host-data">
-									<span>楼主发言：2次</span> <span> 发图： <a href="">2张</a> | <span
-										class="acl-more">更多</span> </span>
-								</div>
 								<div id="alt_reply" class="atl-reply">
 									<a class="reportme a-link" href="" replyid="0"
 										style="visibility:visible;">举报</a> <span class="tuijian">
@@ -289,7 +298,7 @@
 						</div>
 						<p class="post-p">
 							<span class="fl mt10" style="color:#8A8A8A;"> 请遵守 <a
-								class="hrefgonyue" target="_blank" href="">贵大社区公约</a>
+								class="hrefgonyue" target="_blank" href="${pageContext.request.contextPath}/jsp/guida/gzu.jsp">贵大社区公约</a>
 								言论文明，不得违反国家法律法规 </span>
 							<!-- <button class="common-submitBtn" type="button" title="快捷发表">回复</button> -->
 							<input type="button"class="common-submitBtn" value="清空" onclick="erji('','',0)">

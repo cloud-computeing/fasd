@@ -85,7 +85,7 @@ public class PostController {
 			LikeVo likeVo=new LikeVo();
 			ThumpupnumKey thumpupnumKey=new ThumpupnumKey();
 			thumpupnumKey.setPostid(postid);
-			thumpupnumKey.setUserid(Integer.parseInt(userid));
+			thumpupnumKey.setUserid(userid);
 			likeVo.setToKey(thumpupnumKey);
 			postService.like(likeVo);
 			return "forward:/post/postDetails.action";
@@ -96,7 +96,9 @@ public class PostController {
 	public String addComments(Model model,ReplyCustom replyCustom,Integer reply_id,HttpServletRequest request) throws Exception{
 		String replyerId=Global.getUserId(request);
 		String replyerName=Global.getUserName(request);
-		if(replyerId==null){
+		if(replyCustom.getReplycontent()==null || " ".equals(replyCustom.getReplycontent()) || "".equals(replyCustom.getReplycontent())){
+			return "forward:/post/postDetails.action";
+		}else if(replyerId==null){
 			model.addAttribute("url", "jsp/index.jsp");//跳转到主页
 			model.addAttribute("message", "未登录");
 			return "forward";
@@ -117,6 +119,7 @@ public class PostController {
 			}
 			postService.insertReply(replyCustom);
 			postService.UpdateReply(replyCustom.getPostid());
+			model.addAttribute("hidecontent", "1");
 			return "forward:/post/postDetails.action";
 		}
 	}

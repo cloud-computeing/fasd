@@ -1,15 +1,15 @@
 package com.gzu.bbs.pojo;
 
 public class ThumpupnumKey {
-    private Integer userid;
+    private String userid;
 
     private Integer postid;
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
