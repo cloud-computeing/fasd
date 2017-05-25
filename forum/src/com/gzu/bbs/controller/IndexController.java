@@ -31,7 +31,7 @@ public class IndexController {
 		//某类总帖子数
 		postVo.setSum(0);
 		postVo.setPagecount(0);
-		postVo.setSize(1);//每页显示多少条数据
+		postVo.setSize(5);//每页显示多少条数据
 		//进行帖子分页
 		if(postVo.getPostCustom()==null){//默认进入热点
 			postVo.setCurrentPage(1);
@@ -65,9 +65,6 @@ public class IndexController {
 		List<PostCustom> allPost=postService.queryPostPage(postVo);
 		//设置某板块的全部帖子总数,总页数，当前页
 		model.addAttribute("postVo", postVo);
-		/*model.addAttribute("sum", postVo.getSum());
-		model.addAttribute("currentPage", postVo.getCurrentPage());
-		model.addAttribute("pagecount", postVo.getPagecount());*/
 		if(allPlate==null || allPost==null){
 			return "error/error";
 		}else{

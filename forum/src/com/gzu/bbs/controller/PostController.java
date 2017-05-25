@@ -125,6 +125,9 @@ public class PostController {
 	public String addPost(PostCustom postCustom,HttpServletRequest request,MultipartFile picture) throws Exception{
 		String userid=Global.getUserId(request);
 		String username=Global.getUserName(request);
+		if(userid==null){
+			return "forward";
+		}
 		String newFile;
 		newFile=Global.upload(picture);
 		postCustom.setUserid(userid);
